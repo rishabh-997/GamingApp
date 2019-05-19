@@ -1,7 +1,9 @@
 package com.example.android.gamingapp.Authentication;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,6 +37,7 @@ public class signup extends AppCompatActivity {
     FirebaseUser firebaseUser;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    SharedPreferences sharedPreferences;
 
 
 
@@ -126,7 +129,7 @@ otpverify.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 submitotp.setVisibility(View.GONE);
                 String namei = username.getText().toString().trim();
-                String ph = pone.getText().toString().trim();
+                final String ph = pone.getText().toString().trim();
                 String ema = email.getText().toString().trim();
                 String passwo = pass.getText().toString().trim();
                 final String otpn = otp.getText().toString().trim();
@@ -157,6 +160,13 @@ otpverify.setOnClickListener(new View.OnClickListener() {
                                 Toast.makeText(signup.this, "Successfully registered", Toast.LENGTH_SHORT).show();
                                 email.setText("");
                                 pass.setText("");
+
+
+                                sharedPreferences=getSharedPreferences("phone",Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor=sharedPreferences.edit();
+                                editor.putString("Value",ph);
+                                editor.apply();
+
                                 startActivity(new Intent(signup.this, MainActivity.class));
                             } else
                                 Toast.makeText(signup.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -170,7 +180,7 @@ otpverify.setOnClickListener(new View.OnClickListener() {
 
 
                     signupmodel sign = new signupmodel(namei, ema, ph, passwo);
-                        databaseReference.child(uid).setValue(sign).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        databaseReference.child(ph).setValue(sign).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful())

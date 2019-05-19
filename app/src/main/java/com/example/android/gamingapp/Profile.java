@@ -1,5 +1,7 @@
 package com.example.android.gamingapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -39,20 +41,27 @@ public class Profile extends AppCompatActivity {
         databaseReference=database.getReference().child("profiledetails");
 Toast.makeText(Profile.this,"2",Toast.LENGTH_SHORT).show();
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        final String uid=firebaseUser.getUid();
-        Toast.makeText(Profile.this,"3",Toast.LENGTH_SHORT).show();
+        final String uid=firebaseUser.getUid().toString();
+        Toast.makeText(Profile.this,uid,Toast.LENGTH_SHORT).show();
+
+
+        SharedPreferences result=getSharedPreferences("phone",Context.MODE_PRIVATE);
+        final String shphonenumber=result.getString("Value","0000000000").trim();
+
+
+
+
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             { Toast.makeText(Profile.this,"4",Toast.LENGTH_SHORT).show();
 
-                for(DataSnapshot ds:dataSnapshot.getChildren()) {
 
                     Toast.makeText(Profile.this,"5",Toast.LENGTH_SHORT).show();
-                    String name1 = ds.child(uid).child("name").getValue().toString();
-                        String email1 = ds.child(uid).child("email").getValue().toString();
-                        String phone1 = ds.child(uid).child("phonenumber").getValue().toString();
+                    String name1 = dataSnapshot.child(shphonenumber).child("name").getValue().toString();
+                        String email1 = dataSnapshot.child(shphonenumber).child("email").getValue().toString();
+                        String phone1 = dataSnapshot.child(shphonenumber).child("phonenumber").getValue().toString();
 
                          ProfileModel profileModel = new ProfileModel(name1, email1, phone1);
 
@@ -62,7 +71,7 @@ Toast.makeText(Profile.this,"2",Toast.LENGTH_SHORT).show();
                         pemail.setText(email1);
 
 
-                }
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

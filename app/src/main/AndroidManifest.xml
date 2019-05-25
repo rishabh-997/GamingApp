@@ -2,8 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.gamingapp">
 
+
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
         android:allowBackup="true"
@@ -27,7 +32,7 @@
         <activity android:name=".Authentication.signup" />
         <activity android:name=".Authentication.otp" />
         <activity
-            android:name=".CreateContest"
+            android:name=".Tournament.CreateContest"
             android:label="@string/title_activity_create_contest"
             android:theme="@style/AppTheme" />
 
@@ -36,9 +41,11 @@
             android:value="rzp_live_ILgsfZCZoFIKMb" />
 
         <activity android:name=".Payment.PaymentActivity" />
-        <activity android:name=".Authentication.forgetpassword" />
+        <activity android:name=".Authentication.ForgetPassword" />
+        <activity android:name=".Authentication.ChangePassword" />
+
         <activity android:name=".ContactUs" />
-        <activity android:name=".Profile" />
+        <activity android:name=".Profile.Profile" />
         <activity android:name=".Complain" />
         <activity android:name=".Tournament.AllTournament"></activity>
     </application>

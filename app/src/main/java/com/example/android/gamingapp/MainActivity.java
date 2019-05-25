@@ -15,9 +15,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.android.gamingapp.Authentication.ChangePassword;
-import com.example.android.gamingapp.Authentication.login;
 import com.example.android.gamingapp.Authentication.signup;
 import com.example.android.gamingapp.Payment.PaymentActivity;
+import com.example.android.gamingapp.Profile.Profile;
+import com.example.android.gamingapp.Tournament.AllTournament;
+import com.example.android.gamingapp.Tournament.CreateContest;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -92,7 +95,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.profile) {
 startActivity(new Intent(MainActivity.this,Profile.class));
         } else if (id == R.id.tournaments) {
-
+startActivity(new Intent(MainActivity.this,AllTournament.class));
         } else if (id == R.id.wallet) {
    startActivity(new Intent(MainActivity.this,PaymentActivity.class));
         } else if (id == R.id.changepassword) {

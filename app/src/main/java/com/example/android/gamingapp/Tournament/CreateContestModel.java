@@ -1,9 +1,9 @@
-package com.example.android.gamingapp;
+package com.example.android.gamingapp.Tournament;
 
-public class CreateContestAdapter {
-    String startdate,enddate,starttime,endtime,nameoftournamnet,fees,winningprice,gamename,coordinatorname,contactno;
+public class CreateContestModel {
+    String startdate,enddate,starttime,endtime,nameoftournamnet,fees,winningprice,gamename,coordinatorname,contactno,doc_utl;
 
-    public CreateContestAdapter(String startdate, String enddate, String starttime, String endtime, String nameoftournamnet, String fees, String winningprice, String gamename, String coordinatorname, String contactno) {
+    public CreateContestModel(String startdate, String enddate, String starttime, String endtime, String nameoftournamnet, String fees, String winningprice, String gamename, String coordinatorname, String contactno, String doc_utl) {
         this.startdate = startdate;
         this.enddate = enddate;
         this.starttime = starttime;
@@ -14,6 +14,7 @@ public class CreateContestAdapter {
         this.gamename = gamename;
         this.coordinatorname = coordinatorname;
         this.contactno = contactno;
+        this.doc_utl = doc_utl;
     }
 
 
@@ -95,5 +96,13 @@ public class CreateContestAdapter {
 
     public void setContactno(String contactno) {
         this.contactno = contactno;
+    }
+
+    public String getDoc_utl() {
+        return doc_utl;
+    }
+
+    public void setDoc_utl(String doc_utl) {
+        this.doc_utl = doc_utl;
     }
 }

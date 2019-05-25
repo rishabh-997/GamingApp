@@ -1,4 +1,4 @@
-package com.example.android.gamingapp;
+package com.example.android.gamingapp.Profile;
 
 public class ProfileModel {
 

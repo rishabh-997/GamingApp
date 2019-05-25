@@ -35,7 +35,7 @@ public class AllTournament extends AppCompatActivity {
     RecyclerView allbookrecycler;
     FirebaseStorage firebaseStorage;
     StorageReference storageReference;
-    String doc_url;
+    String doc_url="sanket agarwal";
 
 
 
@@ -92,7 +92,6 @@ public class AllTournament extends AppCompatActivity {
                     String gamename=ds.child("gamename").getValue().toString();
                     String coordinatorname=ds.child("coordinatorname").getValue().toString();
                     String contactno=ds.child("contactno").getValue().toString();
-                    String doc_url=ds.child("doc_utl").getValue().toString();
 
 
                     alltournamentModel=new AlltournamentModel(startdate,enddate,starttime,endtime,nameoftournamnet,fees,winningprice,gamename,coordinatorname,contactno,doc_url);

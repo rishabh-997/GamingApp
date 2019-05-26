@@ -1,6 +1,7 @@
 package com.example.android.gamingapp.Payment;
 
 import android.app.Activity;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,12 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.android.gamingapp.R;
+import com.example.android.gamingapp.Register.Register;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 
@@ -49,9 +56,15 @@ public class PaymentActivity extends Activity implements PaymentResultListener {
         final Checkout co = new Checkout();
 
         try {
+
+            String nameoftournament=getIntent().getStringExtra("nameoftournament");
+            String uname=getIntent().getStringExtra("username");
+            String fees=getIntent().getStringExtra("fees");
+            String phone=getIntent().getStringExtra("phone");
+
             JSONObject options = new JSONObject();
-            options.put("name", "Gaming App (Tanmay)");
-            options.put("description", "Entry Charges");
+            options.put("name", uname);
+            options.put("description", nameoftournament);
             //You can omit the image option to fetch the image from dashboard
             options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
             options.put("currency", "INR");
@@ -81,6 +94,36 @@ public class PaymentActivity extends Activity implements PaymentResultListener {
     public void onPaymentSuccess(String razorpayPaymentID) {
         try {
             Toast.makeText(this, "Payment Successful: " + razorpayPaymentID, Toast.LENGTH_SHORT).show();
+            String nameoftournament=getIntent().getStringExtra("nameoftournament");
+            String uname=getIntent().getStringExtra("username");
+            String fees=getIntent().getStringExtra("fees");
+            String phone=getIntent().getStringExtra("phone");
+            DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference();
+
+            databaseReference.child("Register").child(nameoftournament).child(uname).child(phone).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Toast.makeText(PaymentActivity.this,"Successfully Register HAppy Gaming",Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
         } catch (Exception e) {
             Log.e(TAG, "Exception in onPaymentSuccess", e);
         }

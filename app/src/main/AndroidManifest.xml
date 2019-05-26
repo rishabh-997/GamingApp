@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.gamingapp">
 
-
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -43,11 +42,11 @@
         <activity android:name=".Payment.PaymentActivity" />
         <activity android:name=".Authentication.ForgetPassword" />
         <activity android:name=".Authentication.ChangePassword" />
-
-        <activity android:name=".ContactUs" />
+        <activity android:name=".GamingApp.ContactUs" />
         <activity android:name=".Profile.Profile" />
-        <activity android:name=".Complain" />
-        <activity android:name=".Tournament.AllTournament"></activity>
+        <activity android:name=".GamingApp.Complain" />
+        <activity android:name=".Tournament.AllTournament" />
+        <activity android:name=".Register.Register"></activity>
     </application>
 
 </manifest>

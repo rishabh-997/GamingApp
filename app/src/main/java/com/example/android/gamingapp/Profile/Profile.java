@@ -35,11 +35,9 @@ public class Profile extends AppCompatActivity {
         pname=findViewById(R.id.profilename);
         pphone=findViewById(R.id.profilephone);
         pemail=findViewById(R.id.profileemail);
-        Toast.makeText(Profile.this,"1",Toast.LENGTH_SHORT).show();
 
         database=FirebaseDatabase.getInstance();
         databaseReference=database.getReference().child("profiledetails");
-Toast.makeText(Profile.this,"2",Toast.LENGTH_SHORT).show();
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         final String uid=firebaseUser.getUid().toString();
         Toast.makeText(Profile.this,uid,Toast.LENGTH_SHORT).show();
@@ -55,10 +53,8 @@ Toast.makeText(Profile.this,"2",Toast.LENGTH_SHORT).show();
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            { Toast.makeText(Profile.this,"4",Toast.LENGTH_SHORT).show();
+            {
 
-
-                    Toast.makeText(Profile.this,"5",Toast.LENGTH_SHORT).show();
                     String name1 = dataSnapshot.child(shphonenumber).child("name").getValue().toString();
                         String email1 = dataSnapshot.child(shphonenumber).child("email").getValue().toString();
                         String phone1 = dataSnapshot.child(shphonenumber).child("phonenumber").getValue().toString();

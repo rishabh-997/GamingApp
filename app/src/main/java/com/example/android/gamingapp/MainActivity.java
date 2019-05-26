@@ -16,6 +16,7 @@ import android.view.MenuItem;
 
 import com.example.android.gamingapp.Authentication.ChangePassword;
 import com.example.android.gamingapp.Authentication.signup;
+import com.example.android.gamingapp.GamingApp.ContactUs;
 import com.example.android.gamingapp.Payment.PaymentActivity;
 import com.example.android.gamingapp.Profile.Profile;
 import com.example.android.gamingapp.Tournament.AllTournament;

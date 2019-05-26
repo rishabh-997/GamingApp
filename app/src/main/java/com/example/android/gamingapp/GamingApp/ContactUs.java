@@ -1,4 +1,4 @@
-package com.example.android.gamingapp;
+package com.example.android.gamingapp.GamingApp;
 
 import android.Manifest;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.android.gamingapp.R;
 
 public class ContactUs extends AppCompatActivity {
 EditText phone,email;

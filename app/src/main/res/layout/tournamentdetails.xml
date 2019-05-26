@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/cont"
+        android:layout_width="151dp"
+        android:layout_height="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="227dp"
+        android:layout_toEndOf="@+id/image"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/coordi"
+        android:layout_width="151dp"
+        android:layout_height="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-150dp"
+        android:layout_marginTop="279dp"
+        android:layout_toEndOf="@+id/image"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/edate"
+        android:layout_width="151dp"
+        android:layout_height="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="44dp"
+        android:layout_toEndOf="@+id/image"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/stime"
+        android:layout_width="151dp"
+        android:layout_height="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="94dp"
+        android:layout_toEndOf="@+id/image"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/fe"
+        android:layout_width="151dp"
+        android:layout_height="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="143dp"
+        android:layout_toEndOf="@+id/image"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/not"
+        android:layout_width="151dp"
+        android:layout_height="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="186dp"
+        android:layout_toEndOf="@+id/image"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/wp"
+        android:layout_width="151dp"
+        android:layout_height="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-152dp"
+        android:layout_marginTop="223dp"
+        android:layout_toEndOf="@+id/image"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/etime"
+        android:layout_width="151dp"
+        android:layout_height="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-155dp"
+        android:layout_marginTop="171dp"
+        android:layout_toEndOf="@+id/image"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="161dp"
+        android:layout_height="151dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="0dp"
+        tools:srcCompat="@tools:sample/avatars[0]" />
+
+    <TextView
+        android:id="@+id/sdate"
+        android:layout_width="151dp"
+        android:layout_height="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/image"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/gname"
+        android:layout_width="93dp"
+        android:layout_height="36dp"
+        android:layout_alignStart="@+id/not"
+        android:layout_centerVertical="true"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/registerforcontest"
+        android:layout_width="189dp"
+        android:layout_height="51dp"
+        android:layout_alignEnd="@+id/wp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-101dp"
+        android:layout_marginBottom="189dp"
+        android:text="Register" />
+
+</RelativeLayout>

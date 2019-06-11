@@ -4,9 +4,13 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,14 +35,13 @@ import java.util.concurrent.TimeUnit;
 public class signup extends AppCompatActivity {
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback;
     private String verificationCode;
-    EditText username,pone,email,pass,otp;
+    TextInputEditText username,pone,email,pass,otp;
     Button submit,otpverify,submitotp;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     SharedPreferences sharedPreferences;
-
 
 
     @Override
@@ -51,37 +54,40 @@ public class signup extends AppCompatActivity {
 
 
         otpverify=findViewById(R.id.otpverify);
-      otp=findViewById(R.id.otp);
+        otp=findViewById(R.id.otp);
         username = findViewById(R.id.username);
         pone = findViewById(R.id.userphone);
         email = findViewById(R.id.useremail);
         submit = findViewById(R.id.makaccount);
         pass = findViewById(R.id.userpass);
         submitotp=findViewById(R.id.submitotp);
-        String namei = username.getText().toString().trim();
-        String ph = pone.getText().toString().trim();
         String ema = email.getText().toString().trim();
-        String passwo = pass.getText().toString().trim();
+        final String passwo = pass.getText().toString().trim();
 
+        submit.setEnabled(false);
+        submitotp.setEnabled(false);
 
-        submit.setVisibility(View.GONE);
-        submitotp.setVisibility(View.GONE);
+        otpverify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            String namei = username.getText().toString().trim();
+            String ph = pone.getText().toString().trim();
+            if(namei.isEmpty())
+                username.setError("Enter Name");
+            else if(ph.isEmpty())
+                pone.setError("Enter Phone Number");
+                else {
 
-otpverify.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        StartFirebaseLogin();
-        submitotp.setVisibility(View.VISIBLE);
-        String ph = pone.getText().toString().trim();
+                    StartFirebaseLogin();
 
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                "+91"+ph,                     // Phone number to verify
-                60,                           // Timeout duration
-                TimeUnit.SECONDS,                // Unit of timeout
-                signup.this,        // Activity (for callback binding)
-                mCallback);
-
-    }
+                    PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                            "+91" + ph,                     // Phone number to verify
+                            60,                           // Timeout duration
+                            TimeUnit.SECONDS,                // Unit of timeout
+                            signup.this,        // Activity (for callback binding)
+                            mCallback);
+                }
+        }
 });
 
 
@@ -91,7 +97,8 @@ otpverify.setOnClickListener(new View.OnClickListener() {
         submitotp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String otpn = otp.getText().toString().trim();
+                String otpn = otp.getText().toString().trim();
+                if(!otpn.isEmpty()) {
 
                 boolean work = false;
                 PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, otpn);
@@ -103,7 +110,7 @@ otpverify.setOnClickListener(new View.OnClickListener() {
                                     // startActivity(new Intent(signup.this,MainActivity.class));
                                     //finish();
                                     Toast.makeText(signup.this, " OTP Verified", Toast.LENGTH_SHORT).show();
-                                    submit.setVisibility(View.VISIBLE);
+                                    submit.setEnabled(true);
                                 } else {
                                     Toast.makeText(signup.this, "Incorrect OTP", Toast.LENGTH_SHORT).show();
                                 }
@@ -111,7 +118,7 @@ otpverify.setOnClickListener(new View.OnClickListener() {
                         });
 
 
-            }
+            }}
         });
 
 
@@ -133,16 +140,16 @@ otpverify.setOnClickListener(new View.OnClickListener() {
                 String ema = email.getText().toString().trim();
                 String passwo = pass.getText().toString().trim();
                 final String otpn = otp.getText().toString().trim();
-                if (otpn==null) {
+                if (otpn.isEmpty()) {
                     Toast.makeText(signup.this, "please verify otp", Toast.LENGTH_LONG).show();
                 }
-                else if(namei==null){
+                else if(namei.isEmpty()){
                     Toast.makeText(signup.this, "please fill name", Toast.LENGTH_LONG).show();
                 }
-                else if(ema==null){
+                else if(ema.isEmpty()){
                     Toast.makeText(signup.this, "please fill email", Toast.LENGTH_LONG).show();
                 }
-                else if(passwo==null)
+                else if(passwo.isEmpty())
                     Toast.makeText(signup.this, "please fill passwo", Toast.LENGTH_LONG).show();
                 else
 
@@ -199,7 +206,6 @@ otpverify.setOnClickListener(new View.OnClickListener() {
 
 
 
-
                 }
 
             }
@@ -217,10 +223,12 @@ otpverify.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
+                submitotp.setEnabled(true);
             }
 
             @Override
             public void onVerificationFailed(FirebaseException e) {
+                pone.setError("Not Valid");
                 Toast.makeText(signup.this,e.getMessage(),Toast.LENGTH_SHORT).show();
             }
 

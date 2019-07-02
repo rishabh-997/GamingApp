@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <android.support.design.card.MaterialCardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center_horizontal"
@@ -45,7 +45,7 @@
                 android:layout_marginBottom="16dp"
                 android:contentDescription="@string/title_activity_welcome"
                 android:layout_marginTop="16dp"/>
-            <android.support.v7.widget.AppCompatButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_next"
                 android:foreground="?attr/selectableItemBackground"
                 android:background="@color/colorAccent"
@@ -55,5 +55,5 @@
                 android:textColor="@android:color/white"/>
         </LinearLayout>
 
-    </android.support.design.card.MaterialCardView>
+    </com.google.android.material.card.MaterialCardView>
 </RelativeLayout>

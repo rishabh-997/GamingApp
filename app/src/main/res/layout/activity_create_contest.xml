@@ -8,7 +8,7 @@
   android:fillViewport="true"
   tools:context=".Tournament.CreateContest">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:background="@color/colorPrimaryDark"
@@ -23,7 +23,7 @@
           android:minHeight="200dp"
           tools:srcCompat="@tools:sample/avatars[7]" />
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
           android:id="@+id/textInputLayout12"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
@@ -32,12 +32,12 @@
           app:layout_constraintStart_toStartOf="@+id/guideline4"
           app:layout_constraintTop_toBottomOf="@+id/textView6">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
               android:id="@+id/name"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
                />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
           android:id="@+id/textView2"
@@ -52,7 +52,7 @@
           app:layout_constraintStart_toStartOf="@+id/guideline4"
           app:layout_constraintTop_toBottomOf="@+id/textInputLayout12" />
 
-      <android.support.design.widget.TextInputLayout
+      <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout18"
         style="@style/FormsTextInputStyle"
         android:layout_width="0dp"
@@ -63,13 +63,13 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-        <android.support.design.widget.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText
           android:id="@+id/startdate"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:ems="10"
           android:inputType="date" />
-      </android.support.design.widget.TextInputLayout>
+      </com.google.android.material.textfield.TextInputLayout>
 
       <TextView
         android:id="@+id/textView3"
@@ -84,7 +84,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout12" />
 
-      <android.support.design.widget.TextInputLayout
+      <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout8"
         style="@style/FormsTextInputStyle"
         android:layout_width="0dp"
@@ -94,13 +94,13 @@
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
-        <android.support.design.widget.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText
           android:id="@+id/enddate"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:ems="10"
           android:inputType="date" />
-      </android.support.design.widget.TextInputLayout>
+      </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
           android:id="@+id/textView4"
@@ -115,7 +115,7 @@
           app:layout_constraintStart_toStartOf="@+id/guideline4"
           app:layout_constraintTop_toBottomOf="@+id/textInputLayout18" />
 
-      <android.support.design.widget.TextInputLayout
+      <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout9"
         style="@style/FormsTextInputStyle"
         android:layout_width="0dp"
@@ -125,13 +125,13 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
-        <android.support.design.widget.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText
           android:id="@+id/starttime"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:ems="10"
           android:inputType="time" />
-      </android.support.design.widget.TextInputLayout>
+      </com.google.android.material.textfield.TextInputLayout>
 
       <TextView
         android:id="@+id/textView5"
@@ -147,7 +147,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout8" />
 
-      <android.support.design.widget.TextInputLayout
+      <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout13"
         style="@style/FormsTextInputStyle"
         android:layout_width="0dp"
@@ -157,13 +157,13 @@
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textView5">
 
-        <android.support.design.widget.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText
           android:id="@+id/endtime"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:ems="10"
           android:inputType="time" />
-      </android.support.design.widget.TextInputLayout>
+      </com.google.android.material.textfield.TextInputLayout>
 
       <TextView
         android:id="@+id/textView6"
@@ -191,7 +191,7 @@
           app:layout_constraintStart_toStartOf="@+id/guideline4"
           app:layout_constraintTop_toTopOf="@+id/textInputLayout10" />
 
-      <android.support.design.widget.TextInputLayout
+      <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout10"
         style="@style/FormsTextInputStyle"
         android:layout_width="0dp"
@@ -202,12 +202,12 @@
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout13">
 
-        <android.support.design.widget.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText
           android:id="@+id/fees"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:inputType="number" />
-      </android.support.design.widget.TextInputLayout>
+      </com.google.android.material.textfield.TextInputLayout>
 
 
         <TextView
@@ -223,7 +223,7 @@
           app:layout_constraintStart_toStartOf="@+id/guideline4"
           app:layout_constraintTop_toTopOf="@+id/textInputLayout14" />
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
           android:id="@+id/textInputLayout14"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
@@ -233,12 +233,12 @@
           app:layout_constraintStart_toEndOf="@+id/textView8"
           app:layout_constraintTop_toBottomOf="@+id/textInputLayout10">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
               android:id="@+id/winningprice"
               android:layout_width="match_parent"
               android:inputType="number"
               android:layout_height="wrap_content" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <TextView
@@ -254,7 +254,7 @@
           app:layout_constraintStart_toStartOf="@+id/guideline4"
           app:layout_constraintTop_toTopOf="@+id/textInputLayout15" />
 
-      <android.support.design.widget.TextInputLayout
+      <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout15"
         style="@style/FormsTextInputStyle"
         android:layout_width="0dp"
@@ -264,11 +264,11 @@
         app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout14">
 
-        <android.support.design.widget.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText
           android:id="@+id/gamename"
           android:layout_width="match_parent"
           android:layout_height="wrap_content" />
-      </android.support.design.widget.TextInputLayout>
+      </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
           android:id="@+id/textView10"
@@ -283,7 +283,7 @@
           app:layout_constraintStart_toStartOf="@+id/guideline4"
           app:layout_constraintTop_toTopOf="@+id/textInputLayout16" />
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
           android:id="@+id/textInputLayout16"
           style="@style/FormsTextInputStyle"
           android:layout_width="0dp"
@@ -293,10 +293,10 @@
           app:layout_constraintStart_toEndOf="@+id/textView10"
           app:layout_constraintTop_toBottomOf="@+id/textInputLayout15">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
               android:layout_width="match_parent"
               android:layout_height="wrap_content" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <TextView
@@ -312,7 +312,7 @@
           app:layout_constraintStart_toStartOf="@+id/guideline4"
           app:layout_constraintTop_toTopOf="@+id/textInputLayout17" />
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
           android:id="@+id/textInputLayout17"
           style="@style/FormsTextInputStyle"
           android:layout_width="0dp"
@@ -322,11 +322,11 @@
           app:layout_constraintStart_toEndOf="@+id/textView11"
           app:layout_constraintTop_toBottomOf="@+id/textInputLayout16">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
               android:id="@+id/coordinatorname"
               android:layout_width="match_parent"
               android:layout_height="wrap_content" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <TextView
@@ -342,7 +342,7 @@
           app:layout_constraintStart_toStartOf="@+id/guideline4"
           app:layout_constraintTop_toTopOf="@+id/textInputLayout19" />
 
-      <android.support.design.widget.TextInputLayout
+      <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout19"
         style="@style/FormsTextInputStyle"
         android:layout_width="0dp"
@@ -352,11 +352,11 @@
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout17">
 
-        <android.support.design.widget.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText
           android:id="@+id/contactno"
           android:layout_width="match_parent"
           android:layout_height="wrap_content" />
-      </android.support.design.widget.TextInputLayout>
+      </com.google.android.material.textfield.TextInputLayout>
 
 
       <Button
@@ -370,21 +370,21 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
           android:id="@+id/guideline4"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:orientation="vertical"
           app:layout_constraintGuide_percent="0.08" />
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
           android:id="@+id/guideline5"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:orientation="vertical"
           app:layout_constraintGuide_percent="0.92" />
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
           android:id="@+id/guideline"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -392,7 +392,7 @@
           app:layout_constraintGuide_percent="0.5" />
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </ScrollView>

@@ -30,8 +30,14 @@
     <style name="SignUpTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxBackgroundColor">#C3B49FFC</item>
         <item name="boxStrokeColor">#010325</item>
-
     </style>
+    <style name="FormsTextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxBackgroundColor">#8FFFFFFF</item>
+        <item name="boxStrokeColor">#FFFFFF</item>
+    </style>
+  <style name="TextViewWhite"  >
+    <item name="android:textStyle">bold</item>
+  </style>
 
 
 </resources>

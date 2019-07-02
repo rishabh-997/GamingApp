@@ -4,9 +4,9 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 
@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class login extends AppCompatActivity
 {
-    EditText username, password;
+    TextInputEditText username, password;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
 
@@ -48,7 +48,7 @@ public class login extends AppCompatActivity
         String user = username.getText().toString().trim();
         String pass = password.getText().toString().trim();
 
-        if(user==null || pass==null)
+        if(user.isEmpty() || pass.isEmpty())
         {
             Toast.makeText(this,"These fields cannot be left empty ",Toast.LENGTH_LONG).show();
             // username.requestFocus();

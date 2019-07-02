@@ -106,21 +106,23 @@ public class CreateContest extends AppCompatActivity {
 
 
 databaseReference=FirebaseDatabase.getInstance().getReference("Tournaments");
-CreateContestModel createContestModel=new CreateContestModel(startdate,enddate,starttime,endtime,nameoftournamnet,fees,winningprice,gamename,coordinatorname,contactno,doc_url);
-databaseReference.child(nameoftournamnet).setValue(createContestModel).addOnCompleteListener(new OnCompleteListener<Void>() {
-    @Override
-    public void onComplete(@NonNull Task<Void> task) {
-        if(task.isSuccessful())
-        {
-            Toast.makeText(CreateContest.this,"Successful creat contest",Toast.LENGTH_LONG).show();
-        }
-        else
-        {
-            Toast.makeText(CreateContest.this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
+if(!(startdate.isEmpty()||enddate.isEmpty()||startdate.isEmpty()||nameoftournamnet.isEmpty()||fees.isEmpty()||gamename.isEmpty()||contactno.isEmpty())) {
+    CreateContestModel createContestModel = new CreateContestModel(startdate, enddate, starttime, endtime, nameoftournamnet, fees, winningprice, gamename, coordinatorname, contactno, doc_url);
+    databaseReference.child(nameoftournamnet).setValue(createContestModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+        @Override
+        public void onComplete(@NonNull Task<Void> task) {
+            if (task.isSuccessful()) {
+                Toast.makeText(CreateContest.this, "Successfully created contest", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(CreateContest.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
 
+            }
         }
-    }
-});
+    });
+}else {
+    Toast.makeText(CreateContest.this,"Please Fill The form Correctly", Toast.LENGTH_LONG).show();
+
+}
 
 
 

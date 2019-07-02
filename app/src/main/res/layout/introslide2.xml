@@ -2,39 +2,58 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_screen1">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <android.support.design.card.MaterialCardView
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_marginStart="@dimen/card_margin"
+        app:cardCornerRadius="4dp"
+        android:elevation="4dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/slide_1_title"
+                android:textColor="@color/colorTextDarkBlack"
+                android:textSize="32sp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:paddingLeft="@dimen/desc_padding"
+                android:paddingRight="@dimen/desc_padding"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="@dimen/desc_padding"
+                android:paddingRight="@dimen/desc_padding"
+                android:text="@string/slide_1_desc"
+                android:textAlignment="center"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="16sp" />
+            <ImageView
+                android:layout_width="@dimen/img_width_height"
+                android:layout_height="@dimen/img_width_height"
+                android:src="@drawable/ic_launcher_background"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="@string/title_activity_welcome"
+                android:layout_marginTop="16dp"/>
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_next"
+                android:foreground="?attr/selectableItemBackground"
+                android:background="@color/colorAccent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/next"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
 
-        <ImageView
-            android:layout_width="@dimen/img_width_height"
-            android:layout_height="@dimen/img_width_height"
-            android:src="@drawable/ic_launcher_background" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/slide_1_title"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/slide_title"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="@dimen/desc_padding"
-            android:paddingRight="@dimen/desc_padding"
-            android:text="@string/slide_1_desc"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/slide_desc" />
-
-    </LinearLayout>
+    </android.support.design.card.MaterialCardView>
 </RelativeLayout>

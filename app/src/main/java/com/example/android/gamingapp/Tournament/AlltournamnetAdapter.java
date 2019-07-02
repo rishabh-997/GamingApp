@@ -31,8 +31,6 @@ public class AlltournamnetAdapter  extends  RecyclerView.Adapter<AlltournamnetAd
     }
 
 
-
-
     @NonNull
     @Override
     public AlltournamnetAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {

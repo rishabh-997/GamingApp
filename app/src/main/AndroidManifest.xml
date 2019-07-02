@@ -27,8 +27,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".Authentication.login" />
-        <activity android:name=".Authentication.signup" />
+        <activity android:name=".Authentication.login"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name=".Authentication.signup"
+            />
         <activity android:name=".Authentication.otp" />
         <activity
             android:name=".Tournament.CreateContest"

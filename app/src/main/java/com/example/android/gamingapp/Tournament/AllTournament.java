@@ -50,16 +50,12 @@ public class AllTournament extends AppCompatActivity {
 
       //  storageReference=firebaseStorage.getReference().child("Contestimages/"+System.currentTimeMillis()+".jpg");
 
-
-
         arrayList=new ArrayList<>();
         final RecyclerView recyclerView=findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayout.VERTICAL,false));
 
         alltournamnetAdapter=new AlltournamnetAdapter(this,arrayList);
-
-
 
 
     /*    storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -71,15 +67,12 @@ public class AllTournament extends AppCompatActivity {
             }
         });*/
 
-
-
-
-
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
                 arrayList.clear();
+                if(dataSnapshot.hasChildren())
                 for(DataSnapshot ds:dataSnapshot.getChildren())
                 {
                     String startdate=ds.child("startdate").getValue().toString();

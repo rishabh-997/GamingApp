@@ -1,242 +1,398 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Tournament.CreateContest">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/scrollView2"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:fillViewport="true"
+  tools:context=".Tournament.CreateContest">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <android.support.constraint.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/colorPrimaryDark"
+      android:orientation="vertical">
 
         <ImageButton
-            android:id="@+id/uploadimage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:srcCompat="@tools:sample/avatars[7]" />
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="108dp"
-            android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="79dp"
-            android:text="Start Date" />
+          android:id="@+id/uploadimage"
+          android:layout_width="match_parent"
+          android:layout_height="148dp"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          android:minHeight="200dp"
+          tools:srcCompat="@tools:sample/avatars[7]" />
 
-        <EditText
-            android:id="@+id/startdate"
-            android:layout_width="369dp"
-            android:layout_height="43dp"
-            android:ems="10"
-            android:inputType="date" />
+        <android.support.design.widget.TextInputLayout
+          android:id="@+id/textInputLayout12"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          style="@style/FormsTextInputStyle"
+          app:layout_constraintEnd_toStartOf="@+id/guideline5"
+          app:layout_constraintStart_toStartOf="@+id/guideline4"
+          app:layout_constraintTop_toBottomOf="@+id/textView6">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="106dp"
-            android:layout_height="46dp"
-            android:layout_below="@+id/textView2"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="10dp"
-            android:text="EndDate" />
-
-        <EditText
-            android:id="@+id/enddate"
-            android:layout_width="369dp"
-            android:layout_height="43dp"
-            android:ems="10"
-            android:inputType="date" />
+            <android.support.design.widget.TextInputEditText
+              android:id="@+id/name"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+               />
+        </android.support.design.widget.TextInputLayout>
 
         <TextView
-            android:id="@+id/textView4"
-            android:layout_width="114dp"
-            android:layout_height="50dp"
-            android:layout_below="@+id/textView3"
-            android:layout_alignParentStart="true"
-            android:text="Start Time" />
+          android:id="@+id/textView2"
+          android:layout_width="108dp"
+          android:layout_height="wrap_content"
+          android:layout_alignParentStart="true"
+          android:layout_alignParentTop="true"
+          android:layout_marginStart="4dp"
+          android:text="Start Date"
+          style="@style/TextViewWhite"
+          android:textColor="@android:color/white"
+          app:layout_constraintStart_toStartOf="@+id/guideline4"
+          app:layout_constraintTop_toBottomOf="@+id/textInputLayout12" />
 
-        <EditText
-            android:id="@+id/starttime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time" />
+      <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout18"
+        style="@style/FormsTextInputStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:inputType="date"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <android.support.design.widget.TextInputEditText
+          android:id="@+id/startdate"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:ems="10"
+          android:inputType="date" />
+      </android.support.design.widget.TextInputLayout>
+
+      <TextView
+        android:id="@+id/textView3"
+        style="@style/TextViewWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="8dp"
+        android:text="EndDate"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout12" />
+
+      <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout8"
+        style="@style/FormsTextInputStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <android.support.design.widget.TextInputEditText
+          android:id="@+id/enddate"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:ems="10"
+          android:inputType="date" />
+      </android.support.design.widget.TextInputLayout>
 
         <TextView
-            android:id="@+id/textView5"
-            android:layout_width="114dp"
-            android:layout_height="52dp"
-            android:layout_below="@+id/textView4"
-            android:layout_alignParentStart="true"
-            android:text="End Time" />
+          android:id="@+id/textView4"
+          style="@style/TextViewWhite"
+          android:textColor="@android:color/white"
+          android:layout_width="114dp"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/textView3"
+          android:layout_alignParentStart="true"
+          android:layout_marginTop="8dp"
+          android:text="Start Time"
+          app:layout_constraintStart_toStartOf="@+id/guideline4"
+          app:layout_constraintTop_toBottomOf="@+id/textInputLayout18" />
 
-        <EditText
-            android:id="@+id/endtime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+      <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout9"
+        style="@style/FormsTextInputStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <android.support.design.widget.TextInputEditText
+          android:id="@+id/starttime"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:ems="10"
+          android:inputType="time" />
+      </android.support.design.widget.TextInputLayout>
+
+      <TextView
+        android:id="@+id/textView5"
+        style="@style/TextViewWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="End Time"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout8" />
+
+      <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout13"
+        style="@style/FormsTextInputStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+        <android.support.design.widget.TextInputEditText
+          android:id="@+id/endtime"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:ems="10"
+          android:inputType="time" />
+      </android.support.design.widget.TextInputLayout>
+
+      <TextView
+        android:id="@+id/textView6"
+        style="@style/TextViewWhite"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView5"
+        android:layout_marginTop="16dp"
+        android:text="Name of Tournamnet"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/uploadimage" />
+
+        <TextView
+          android:id="@+id/textView7"
+          android:layout_width="100dp"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/textView6"
+          android:layout_alignParentStart="true"
+          android:layout_marginTop="24dp"
+          android:text="Entry Fees"
+          style="@style/TextViewWhite"
+          android:textColor="@android:color/white"
+          app:layout_constraintStart_toStartOf="@+id/guideline4"
+          app:layout_constraintTop_toTopOf="@+id/textInputLayout10" />
+
+      <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout10"
+        style="@style/FormsTextInputStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout13">
+
+        <android.support.design.widget.TextInputEditText
+          android:id="@+id/fees"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="number" />
+      </android.support.design.widget.TextInputLayout>
 
 
         <TextView
-            android:id="@+id/textView6"
-            android:layout_width="142dp"
-            android:layout_height="44dp"
-            android:layout_below="@+id/textView5"
-            android:layout_alignParentStart="true"
-            android:text="Name of Tournamnet" />
+          android:id="@+id/textView8"
+          android:layout_width="100dp"
+          android:layout_height="wrap_content"
+          style="@style/TextViewWhite"
+          android:textColor="@android:color/white"
+          android:layout_below="@+id/textView7"
+          android:layout_alignParentStart="true"
+          android:layout_marginTop="24dp"
+          android:text="Winning price"
+          app:layout_constraintStart_toStartOf="@+id/guideline4"
+          app:layout_constraintTop_toTopOf="@+id/textInputLayout14" />
 
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="200dp"
-            android:layout_height="142dp" />
+        <android.support.design.widget.TextInputLayout
+          android:id="@+id/textInputLayout14"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          style="@style/FormsTextInputStyle"
+          app:layout_constraintEnd_toStartOf="@+id/guideline5"
+          app:layout_constraintStart_toEndOf="@+id/textView8"
+          app:layout_constraintTop_toBottomOf="@+id/textInputLayout10">
 
-        </LinearLayout>
+            <android.support.design.widget.TextInputEditText
+              android:id="@+id/winningprice"
+              android:layout_width="match_parent"
+              android:inputType="number"
+              android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
 
 
+        <TextView
+          android:id="@+id/textView9"
+          style="@style/TextViewWhite"
+          android:textColor="@android:color/white"
+          android:layout_width="100dp"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/textView8"
+          android:layout_alignParentStart="true"
+          android:layout_marginTop="24dp"
+          android:text="Game Name"
+          app:layout_constraintStart_toStartOf="@+id/guideline4"
+          app:layout_constraintTop_toTopOf="@+id/textInputLayout15" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+      <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout15"
+        style="@style/FormsTextInputStyle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout14">
 
-    <TextView
-            android:id="@+id/textView7"
-            android:layout_width="138dp"
-            android:layout_height="46dp"
-            android:layout_below="@+id/textView6"
-            android:layout_alignParentStart="true"
-            android:text="Entry Fees" />
-        <EditText
-            android:id="@+id/fees"
-            android:layout_width="200dp"
-            android:layout_height="142dp" />
+        <android.support.design.widget.TextInputEditText
+          android:id="@+id/gamename"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
+      </android.support.design.widget.TextInputLayout>
 
-    </LinearLayout>
+        <TextView
+          android:id="@+id/textView10"
+          android:layout_width="100dp"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/textView9"
+          android:layout_alignParentStart="true"
+          style="@style/TextViewWhite"
+          android:layout_marginTop="24dp"
+          android:textColor="@android:color/white"
+          android:text="Game Type"
+          app:layout_constraintStart_toStartOf="@+id/guideline4"
+          app:layout_constraintTop_toTopOf="@+id/textInputLayout16" />
+
+        <android.support.design.widget.TextInputLayout
+          android:id="@+id/textInputLayout16"
+          style="@style/FormsTextInputStyle"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          app:layout_constraintEnd_toStartOf="@+id/guideline5"
+          app:layout_constraintStart_toEndOf="@+id/textView10"
+          app:layout_constraintTop_toBottomOf="@+id/textInputLayout15">
+
+            <android.support.design.widget.TextInputEditText
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
+        <TextView
+          android:id="@+id/textView11"
+          style="@style/TextViewWhite"
+          android:textColor="@android:color/white"
+          android:layout_width="100dp"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/textView10"
+          android:layout_alignParentStart="true"
+          android:layout_marginTop="16dp"
+          android:text="Coordinator \nName"
+          app:layout_constraintStart_toStartOf="@+id/guideline4"
+          app:layout_constraintTop_toTopOf="@+id/textInputLayout17" />
+
+        <android.support.design.widget.TextInputLayout
+          android:id="@+id/textInputLayout17"
+          style="@style/FormsTextInputStyle"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="8dp"
+          app:layout_constraintEnd_toStartOf="@+id/guideline5"
+          app:layout_constraintStart_toEndOf="@+id/textView11"
+          app:layout_constraintTop_toBottomOf="@+id/textInputLayout16">
+
+            <android.support.design.widget.TextInputEditText
+              android:id="@+id/coordinatorname"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <TextView
+          android:id="@+id/textView12"
+          android:layout_width="100dp"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/textView11"
+          style="@style/TextViewWhite"
+          android:textColor="@android:color/white"
+          android:layout_alignParentStart="true"
+          android:layout_marginTop="16dp"
+          android:text="Coordinator \nContact no."
+          app:layout_constraintStart_toStartOf="@+id/guideline4"
+          app:layout_constraintTop_toTopOf="@+id/textInputLayout19" />
+
+      <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout19"
+        style="@style/FormsTextInputStyle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout17">
 
-    <TextView
-            android:id="@+id/textView8"
-            android:layout_width="140dp"
-            android:layout_height="44dp"
-            android:layout_below="@+id/textView7"
-            android:layout_alignParentStart="true"
-            android:text="Winning price" />
-        <EditText
-            android:id="@+id/winningprice"
-            android:layout_width="200dp"
-            android:layout_height="142dp" />
+        <android.support.design.widget.TextInputEditText
+          android:id="@+id/contactno"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
+      </android.support.design.widget.TextInputLayout>
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+      <Button
+        android:id="@+id/createcontest"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="create contest"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <android.support.constraint.Guideline
+          android:id="@+id/guideline4"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          app:layout_constraintGuide_percent="0.08" />
+
+        <android.support.constraint.Guideline
+          android:id="@+id/guideline5"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          app:layout_constraintGuide_percent="0.92" />
+
+        <android.support.constraint.Guideline
+          android:id="@+id/guideline"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          app:layout_constraintGuide_percent="0.5" />
 
 
-
-    <TextView
-            android:id="@+id/textView9"
-            android:layout_width="140dp"
-            android:layout_height="44dp"
-            android:layout_below="@+id/textView8"
-            android:layout_alignParentStart="true"
-            android:text="Game Name" />
-
-        <EditText
-            android:id="@+id/gamename"
-            android:layout_width="200dp"
-            android:layout_height="142dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-
-    <TextView
-            android:id="@+id/textView10"
-            android:layout_width="140dp"
-            android:layout_height="44dp"
-            android:layout_below="@+id/textView9"
-            android:layout_alignParentStart="true"
-            android:text="Game Type" />
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="142dp" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-
-    <TextView
-            android:id="@+id/textView11"
-            android:layout_width="140dp"
-            android:layout_height="44dp"
-            android:layout_below="@+id/textView10"
-            android:layout_alignParentStart="true"
-            android:text="Coordinator Name" />
-
-        <EditText
-            android:id="@+id/coordinatorname"
-            android:layout_width="200dp"
-            android:layout_height="142dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-    <TextView
-            android:id="@+id/textView12"
-            android:layout_width="175dp"
-            android:layout_height="44dp"
-            android:layout_below="@+id/textView11"
-            android:layout_alignParentStart="true"
-            android:text="Coordinator Contact no." />
-
-        <EditText
-            android:id="@+id/contactno"
-            android:layout_width="200dp"
-            android:layout_height="142dp" />
-
-    </LinearLayout>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/createcontest"
-            android:text="create contest"
-            android:gravity="center"/>
-
-
-
-
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
 
 </ScrollView>

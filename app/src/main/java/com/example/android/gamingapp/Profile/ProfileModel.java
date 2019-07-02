@@ -10,7 +10,6 @@ public class ProfileModel {
         this.phonenumber = phonenumber;
     }
 
-
     public String getName() {
         return name;
     }

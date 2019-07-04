@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.android.gamingapp.MainActivity;
+import com.example.android.gamingapp.Tournament.MainActivity;
 import com.example.android.gamingapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -90,32 +90,26 @@ public class signup extends AppCompatActivity {
         databaseReference=firebaseDatabase.getReference("profiledetails");
 
 
-        submitotp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String otpn = otp.getText().toString().trim();
-                if(!otpn.isEmpty()) {
+        submitotp.setOnClickListener(v -> {
+            String otpn = otp.getText().toString().trim();
+            if(!otpn.isEmpty()) {
 
-                boolean work = false;
-                PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, otpn);
-                firebaseAuth.signInWithCredential(credential)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // startActivity(new Intent(signup.this,MainActivity.class));
-                                    //finish();
-                                    Toast.makeText(signup.this, " OTP Verified", Toast.LENGTH_SHORT).show();
-                                    submit.setEnabled(true);
-                                } else {
-                                    Toast.makeText(signup.this, "Incorrect OTP", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+            boolean work = false;
+            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, otpn);
+            firebaseAuth.signInWithCredential(credential)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            // startActivity(new Intent(signup.this,MainActivity.class));
+                            //finish();
+                            Toast.makeText(signup.this, " OTP Verified", Toast.LENGTH_SHORT).show();
+                            submit.setEnabled(true);
+                        } else {
+                            Toast.makeText(signup.this, "Incorrect OTP", Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
 
-            }}
-        });
+        }});
 
 
 
@@ -183,15 +177,12 @@ public class signup extends AppCompatActivity {
 
 
                     signupmodel sign = new signupmodel(namei, ema, ph, passwo);
-                        databaseReference.child(ph).setValue(sign).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful())
-                                    Toast.makeText(signup.this, "Uploaded on FireBase", Toast.LENGTH_SHORT).show();
-                                else
-                                    Toast.makeText(signup.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        databaseReference.child(ph).setValue(sign).addOnCompleteListener(task -> {
+                            if (task.isSuccessful())
+                                Toast.makeText(signup.this, "Uploaded on FireBase", Toast.LENGTH_SHORT).show();
+                            else
+                                Toast.makeText(signup.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
-                            }
                         });
 
 

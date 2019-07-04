@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 
-import com.example.android.gamingapp.MainActivity;
+import com.example.android.gamingapp.Tournament.MainActivity;
 import com.example.android.gamingapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

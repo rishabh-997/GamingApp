@@ -13,10 +13,12 @@ import android.widget.TextView;
 
 import com.example.android.gamingapp.Payment.PaymentActivity;
 import com.example.android.gamingapp.R;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class Register extends AppCompatActivity {
-TextView phone,fees;
-EditText username;
+Chip phone,fees;
+TextInputEditText username;
 Button register;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -42,16 +42,19 @@ public class AllTournament extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_tournament);
 
-        allbookrecycler=(RecyclerView)findViewById(R.id.recyclerview);
+
+
+
+
         database=FirebaseDatabase.getInstance();
         databaseReference=database.getReference().child("Tournaments");
 
-      //  storageReference=firebaseStorage.getReference().child("Contestimages/"+System.currentTimeMillis()+".jpg");
+        //  storageReference=firebaseStorage.getReference().child("Contestimages/"+System.currentTimeMillis()+".jpg");
 
         arrayList=new ArrayList<>();
         final RecyclerView recyclerView=findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(false);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayout.VERTICAL,false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         alltournamnetAdapter=new AlltournamnetAdapter(this,arrayList);
 
@@ -71,23 +74,23 @@ public class AllTournament extends AppCompatActivity {
             {
                 arrayList.clear();
                 if(dataSnapshot.hasChildren())
-                for(DataSnapshot ds:dataSnapshot.getChildren())
-                {
-                    String startdate=ds.child("startdate").getValue().toString();
-                    String enddate=ds.child("enddate").getValue().toString();
-                    String starttime=ds.child("starttime").getValue().toString();
-                    String endtime=ds.child("endtime").getValue().toString();
-                    String nameoftournamnet=ds.child("nameoftournamnet").getValue().toString();
-                    String fees=ds.child("fees").getValue().toString();
-                    String winningprice=ds.child("winningprice").getValue().toString();
-                    String gamename=ds.child("gamename").getValue().toString();
-                    String coordinatorname=ds.child("coordinatorname").getValue().toString();
-                    String contactno=ds.child("contactno").getValue().toString();
+                    for(DataSnapshot ds:dataSnapshot.getChildren())
+                    {
+                        String startdate=ds.child("startdate").getValue().toString();
+                        String enddate=ds.child("enddate").getValue().toString();
+                        String starttime=ds.child("starttime").getValue().toString();
+                        String endtime=ds.child("endtime").getValue().toString();
+                        String nameoftournamnet=ds.child("nameoftournamnet").getValue().toString();
+                        String fees=ds.child("fees").getValue().toString();
+                        String winningprice=ds.child("winningprice").getValue().toString();
+                        String gamename=ds.child("gamename").getValue().toString();
+                        String coordinatorname=ds.child("coordinatorname").getValue().toString();
+                        String contactno=ds.child("contactno").getValue().toString();
 
 
-                    alltournamentModel=new AlltournamentModel(startdate,enddate,starttime,endtime,nameoftournamnet,fees,winningprice,gamename,coordinatorname,contactno,doc_url);
-                    arrayList.add(alltournamentModel);
-                }
+                        alltournamentModel=new AlltournamentModel(startdate,enddate,starttime,endtime,nameoftournamnet,fees,winningprice,gamename,coordinatorname,contactno,doc_url);
+                        arrayList.add(alltournamentModel);
+                    }
                 recyclerView.setAdapter(alltournamnetAdapter);
             }
             @Override
@@ -111,10 +114,6 @@ public class AllTournament extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {            }
         };
         databaseReference.addChildEventListener(childEventListener);
-
-
-
-
 
 
     }

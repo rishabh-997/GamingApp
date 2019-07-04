@@ -1,35 +1,39 @@
 package com.example.android.gamingapp.Tournament;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Transformation;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.android.gamingapp.R;
+import com.example.android.gamingapp.RVAnimation;
 import com.example.android.gamingapp.Register.Register;
-import com.google.firebase.database.ChildEventListener;
-import com.squareup.picasso.Picasso;
+import com.google.android.material.chip.Chip;
 
 import java.util.ArrayList;
 
-public class AlltournamnetAdapter  extends  RecyclerView.Adapter<AlltournamnetAdapter.ViewHolder>{
+public class AlltournamnetAdapter  extends RecyclerView.Adapter<AlltournamnetAdapter.ViewHolder> {
 
-    Context context;
-    ArrayList<AlltournamentModel> arrayList;
+    private Context context;
+    private ArrayList<AlltournamentModel> arrayList;
 
-    public AlltournamnetAdapter(Context context, ArrayList<AlltournamentModel> arrayList)
-    {
-        this.context=context;
-        this.arrayList=arrayList;
+    public AlltournamnetAdapter(Context context, ArrayList<AlltournamentModel> arrayList) {
+        this.context = context;
+        this.arrayList = arrayList;
     }
-
 
     @NonNull
     @Override
@@ -39,41 +43,47 @@ public class AlltournamnetAdapter  extends  RecyclerView.Adapter<AlltournamnetAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position)
-    {
-        AlltournamentModel alltournamentModel=arrayList.get(position);
-        String startdate=alltournamentModel.getStartdate();
-        String enddate=alltournamentModel.getEnddate();
-        String starttime=alltournamentModel.getStarttime();
-        String endtime=alltournamentModel.getEndtime();
-        String fees=alltournamentModel.getFees();
-        String winningprice=alltournamentModel.getWinningprice();
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+        AlltournamentModel alltournamentModel = arrayList.get(position);
+        String startdate="From: "+alltournamentModel.getStartdate();
+        String enddate="To: "+alltournamentModel.getEnddate();
+        String starttime = "Starts at "+alltournamentModel.getStarttime();
+        String endtime="Ends at "+alltournamentModel.getEndtime();
         String nameoftournament=alltournamentModel.getNameoftournamnet();
         String gamename=alltournamentModel.getGamename();
-        String coordinatorname=alltournamentModel.getCoordinatorname();
+        String winningprice="Prize: "+alltournamentModel.getWinningprice();
+        String coordinatorname="Coordinator: "+alltournamentModel.getCoordinatorname();
+        String fees="Fees: "+alltournamentModel.getFees();
         String contactno=alltournamentModel.getContactno();
 
 
-        viewHolder.startdate.setText(startdate);
+        viewHolder.down_arrow.setOnClickListener(v -> {
+            viewHolder.down_arrow.setVisibility(View.GONE);
+            viewHolder.up_arror.setVisibility(View.VISIBLE);
+            RVAnimation.expand(viewHolder.linearLayout);
+        });
+        viewHolder.up_arror.setOnClickListener(v -> {
+            viewHolder.up_arror.setVisibility(View.GONE);
+            viewHolder.down_arrow.setVisibility(View.VISIBLE);
+            RVAnimation.collapse(viewHolder.linearLayout);
+
+        });
+                viewHolder.startdate.setText(startdate);
         viewHolder.enddate.setText(enddate);
         viewHolder.starttime.setText(starttime);
         viewHolder.endtime.setText(endtime);
-        viewHolder.fees.setText(fees);
-        viewHolder.winningprice.setText(winningprice);
         viewHolder.nameoftournamnet.setText(nameoftournament);
         viewHolder.gamename.setText(gamename);
+        viewHolder.fees.setText(fees);
+        viewHolder.winningprice.setText(winningprice);
         viewHolder.coordinatorname.setText(coordinatorname);
         viewHolder.contactno.setText(contactno);
-     //   Picasso.get().load(doc_url).into(viewHolder.contestimage);
-        viewHolder.register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(context,Register.class);
-                context.startActivity(i);
+//           Picasso.get().load(doc_url).into(viewHolder.contestimage);
+        viewHolder.register.setOnClickListener(v -> {
+            Intent i=new Intent(context,Register.class);
+            context.startActivity(i);
 
-            }
         });
-
 
         //viewHolder.name.setText(name);
         //viewHolder.author.setText(msg);
@@ -82,30 +92,27 @@ public class AlltournamnetAdapter  extends  RecyclerView.Adapter<AlltournamnetAd
 
     }
 
-
-
     @Override
     public int getItemCount() {
         return arrayList.size();
     }
 
-
-
-
-
-    public class ViewHolder extends RecyclerView.ViewHolder
-    {
-TextView startdate,enddate,starttime,endtime,nameoftournamnet,fees,winningprice,gamename,coordinatorname,contactno;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView nameoftournamnet, fees, winningprice, gamename, coordinatorname, contactno;
+        Chip startdate, enddate, starttime, endtime;
         ImageView contestimage;
         Button register;
-        public ViewHolder(@NonNull View itemView)
-        {
+        View up_arror, down_arrow;
+        LinearLayout linearLayout;
+
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
-
+            linearLayout = itemView.findViewById(R.id.linear_layout);
             startdate=itemView.findViewById(R.id.sdate);
             enddate=itemView.findViewById(R.id.edate);
-            starttime=itemView.findViewById(R.id.stime);
+            starttime = itemView.findViewById(R.id.stime);
+            up_arror = itemView.findViewById(R.id.up_arrow);
+            down_arrow = itemView.findViewById(R.id.down_arrow);
             endtime=itemView.findViewById(R.id.etime);
             nameoftournamnet=itemView.findViewById(R.id.not);
             fees=itemView.findViewById(R.id.fe);
@@ -116,19 +123,10 @@ TextView startdate,enddate,starttime,endtime,nameoftournamnet,fees,winningprice,
             contestimage=itemView.findViewById(R.id.image);
             register=itemView.findViewById(R.id.registerforcontest);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
     }
+
+
+
+
 }

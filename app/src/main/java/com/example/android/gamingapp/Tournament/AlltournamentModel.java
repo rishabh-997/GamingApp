@@ -1,8 +1,11 @@
 package com.example.android.gamingapp.Tournament;
 
-public class AlltournamentModel {
+import android.os.Parcel;
+import android.os.Parcelable;
 
-    String startdate,enddate,starttime,endtime,nameoftournamnet,fees,winningprice,gamename,coordinatorname,contactno,doc_utl;
+public class AlltournamentModel implements Parcelable {
+
+    private String startdate,enddate,starttime,endtime,nameoftournamnet,fees,winningprice,gamename,coordinatorname,contactno,doc_utl;
 
     public AlltournamentModel(String startdate, String enddate, String starttime, String endtime, String nameoftournamnet, String fees, String winningprice, String gamename, String coordinatorname, String contactno, String doc_utl) {
         this.startdate = startdate;
@@ -18,6 +21,32 @@ public class AlltournamentModel {
         this.doc_utl = doc_utl;
     }
 
+
+    protected AlltournamentModel(Parcel in) {
+        startdate = in.readString();
+        enddate = in.readString();
+        starttime = in.readString();
+        endtime = in.readString();
+        nameoftournamnet = in.readString();
+        fees = in.readString();
+        winningprice = in.readString();
+        gamename = in.readString();
+        coordinatorname = in.readString();
+        contactno = in.readString();
+        doc_utl = in.readString();
+    }
+
+    public static final Creator<AlltournamentModel> CREATOR = new Creator<AlltournamentModel>() {
+        @Override
+        public AlltournamentModel createFromParcel(Parcel in) {
+            return new AlltournamentModel(in);
+        }
+
+        @Override
+        public AlltournamentModel[] newArray(int size) {
+            return new AlltournamentModel[size];
+        }
+    };
 
     public String getStartdate() {
         return startdate;
@@ -105,5 +134,25 @@ public class AlltournamentModel {
 
     public void setDoc_utl(String doc_utl) {
         this.doc_utl = doc_utl;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(startdate);
+        dest.writeString(enddate);
+        dest.writeString(starttime);
+        dest.writeString(endtime);
+        dest.writeString(nameoftournamnet);
+        dest.writeString(fees);
+        dest.writeString(winningprice);
+        dest.writeString(gamename);
+        dest.writeString(coordinatorname);
+        dest.writeString(contactno);
+        dest.writeString(doc_utl);
     }
 }

@@ -1,11 +1,13 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents">
         <!-- Customize your theme here. -->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorSecondary">@color/textThemeColor</item>
         <item name="colorPrimary">@color/colorPrimary</item>
+
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -33,11 +35,16 @@
     </style>
     <style name="FormsTextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxBackgroundColor">#8FFFFFFF</item>
-        <item name="boxStrokeColor">#FFFFFF</item>
+        <item name="boxStrokeColor">@color/colorAccent</item>
     </style>
+
   <style name="TextViewWhite"  >
     <item name="android:textStyle">bold</item>
   </style>
+    <style name="OutlineButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/LightWhite</item>
+        <item name="android:textColor">@color/LightWhite</item>
+    </style>
 
 
 </resources>

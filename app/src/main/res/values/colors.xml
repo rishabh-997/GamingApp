@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#D83D0058</color>
-    <color name="colorPrimaryDark">#17002E</color>
-    <color name="colorAccent">#8B00B6</color>
+
+    <color name="colorPrimary">#3A0053</color>
+    <color name="colorPrimaryDark">#1F0836</color>
+    <color name="colorAccent">#74009B</color>
     <color name="colorTextDarkBlack">#000000</color>
     <color name="colorTextBlack">#CD000000</color>
+    <color name="LightWhite">#B9FFFFFF</color>
+    <color name="textThemeColor">#BC2DE9</color>
+    <color name="background">#AFAFAF</color>
 
     <!-- Screens background color-->
     <color name="bg_screen1">#1f1c1d</color>

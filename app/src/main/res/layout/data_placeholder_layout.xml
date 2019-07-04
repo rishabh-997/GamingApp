@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginStart="16dp"
+  android:layout_marginEnd="16dp"
+  android:layout_marginTop="8dp"
+  android:orientation="vertical"
+  >
+  <View
+    android:id="@+id/thumbnail"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@drawable/placeholder_background"
+    />
+
+  <View
+    android:layout_width="200dp"
+    android:layout_height="@dimen/placeholderTextHeight"
+    android:layout_alignParentTop="true"
+    android:layout_marginTop="18dp"
+    android:layout_marginStart="16dp"
+    android:background="@drawable/placeholder_view" />
+
+  <View
+    android:layout_below="@+id/thumbnail"
+    android:layout_width="match_parent"
+    android:layout_height="108dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginTop="1dp"
+    android:background="@drawable/placeholder_background" />
+
+  <View
+    android:id="@+id/sd"
+    android:layout_width="151dp"
+    android:layout_height="24dp"
+    android:layout_below="@+id/thumbnail"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="18dp"
+    android:layout_marginEnd="10dp"
+    android:layout_toStartOf="@+id/anchor"
+    android:background="@drawable/placeholder_view" />
+  <View
+    android:layout_below="@+id/thumbnail"
+    android:layout_centerHorizontal="true"
+    android:layout_width="4dp"
+    android:id="@+id/anchor"
+    android:layout_height="24dp"/>
+
+  <View
+    android:layout_width="151dp"
+    android:layout_height="24dp"
+    android:layout_below="@+id/thumbnail"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="18dp"
+    android:layout_toEndOf="@+id/anchor"
+    android:background="@drawable/placeholder_view" />
+
+  <View
+    android:layout_width="151dp"
+    android:layout_height="24dp"
+    android:layout_below="@+id/thumbnail"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="54dp"
+    android:layout_marginEnd="11dp"
+    android:layout_toStartOf="@+id/anchor"
+    android:background="@drawable/placeholder_view" />
+
+  <View
+    android:layout_width="151dp"
+    android:layout_height="24dp"
+    android:layout_below="@+id/thumbnail"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="54dp"
+    android:layout_toEndOf="@+id/anchor"
+    android:background="@drawable/placeholder_view" />
+
+</RelativeLayout>
+

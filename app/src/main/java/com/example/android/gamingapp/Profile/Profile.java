@@ -2,14 +2,15 @@ package com.example.android.gamingapp.Profile;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.gamingapp.R;
+import com.google.android.material.chip.Chip;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -21,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Profile extends AppCompatActivity {
 
-    TextView pname,pphone,pemail;
+    Chip pname,pphone,pemail;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
     ChildEventListener childEventListener;
@@ -39,7 +40,7 @@ public class Profile extends AppCompatActivity {
         database=FirebaseDatabase.getInstance();
         databaseReference=database.getReference().child("profiledetails");
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        final String uid=firebaseUser.getUid().toString();
+        final String uid=firebaseUser.getUid();
         Toast.makeText(Profile.this,uid,Toast.LENGTH_SHORT).show();
 
 

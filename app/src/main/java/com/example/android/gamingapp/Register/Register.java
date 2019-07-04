@@ -3,26 +3,22 @@ package com.example.android.gamingapp.Register;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.android.gamingapp.Payment.PaymentActivity;
 import com.example.android.gamingapp.R;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class Register extends AppCompatActivity {
-TextView phone,fees;
-EditText username;
+Chip phone,fees;
+TextInputEditText username;
 Button register;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

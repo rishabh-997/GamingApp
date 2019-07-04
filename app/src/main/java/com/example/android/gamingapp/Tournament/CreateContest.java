@@ -1,9 +1,8 @@
 package com.example.android.gamingapp.Tournament;
 
-import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,17 +12,16 @@ import android.widget.Toast;
 
 import com.example.android.gamingapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 public class CreateContest extends AppCompatActivity {
-    EditText xstartdate,xenddate,xstarttime,xendtime,xnameoftournamnet,xfees,xwinningprice,xgamename,xcoordinatorname,xcontactno;
+    TextInputEditText xstartdate,xenddate,xstarttime,xendtime,xnameoftournamnet,xfees,xwinningprice,xgamename,xcoordinatorname,xcontactno;
     Button createcontest;
     String startdate,enddate,starttime,endtime,nameoftournamnet,fees,winningprice,gamename,coordinatorname,contactno;
     ImageButton uploadimage;
@@ -72,55 +70,53 @@ public class CreateContest extends AppCompatActivity {
             }
         });*/
 
-        createcontest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        createcontest.setOnClickListener(v -> {
 
-                startdate=xstartdate.getText().toString().trim();
-                enddate=xenddate.getText().toString().trim();
-                starttime=xstarttime.getText().toString().trim();
-                endtime=xendtime.getText().toString().trim();
-                nameoftournamnet=xnameoftournamnet.getText().toString().trim();
-                fees=xfees.getText().toString().trim();
-                winningprice=xwinningprice.getText().toString().trim();
-                gamename=xgamename.getText().toString().trim();
-                coordinatorname=xcoordinatorname.getText().toString().trim();
-                contactno=xcontactno.getText().toString().trim();
+            startdate=xstartdate.getText().toString().trim();
+            enddate=xenddate.getText().toString().trim();
+            starttime=xstarttime.getText().toString().trim();
+            endtime=xendtime.getText().toString().trim();
+            nameoftournamnet=xnameoftournamnet.getText().toString().trim();
+            fees=xfees.getText().toString().trim();
+            winningprice=xwinningprice.getText().toString().trim();
+            gamename=xgamename.getText().toString().trim();
+            coordinatorname=xcoordinatorname.getText().toString().trim();
+            contactno=xcontactno.getText().toString().trim();
 
 
 
-       /*         storageReference.putFile(doc_data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
-                    {
-                        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri)
-                            {
-                                Uri abc=uri;
-                                doc_url=abc.toString();
-                            }
-                        });
-                    }
-                });*/
+   /*         storageReference.putFile(doc_data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
+                {
+                    storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri)
+                        {
+                            Uri abc=uri;
+                            doc_url=abc.toString();
+                        }
+                    });
+                }
+            });*/
 
 
 databaseReference=FirebaseDatabase.getInstance().getReference("Tournaments");
-if(!(startdate.isEmpty()||enddate.isEmpty()||startdate.isEmpty()||nameoftournamnet.isEmpty()||fees.isEmpty()||gamename.isEmpty()||contactno.isEmpty())) {
-    CreateContestModel createContestModel = new CreateContestModel(startdate, enddate, starttime, endtime, nameoftournamnet, fees, winningprice, gamename, coordinatorname, contactno, doc_url);
-    databaseReference.child(nameoftournamnet).setValue(createContestModel).addOnCompleteListener(new OnCompleteListener<Void>() {
-        @Override
-        public void onComplete(@NonNull Task<Void> task) {
-            if (task.isSuccessful()) {
-                Toast.makeText(CreateContest.this, "Successfully created contest", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(CreateContest.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+if(!(startdate.isEmpty()||enddate.isEmpty()||nameoftournamnet.isEmpty()||fees.isEmpty()||gamename.isEmpty()||contactno.isEmpty())) {
+CreateContestModel createContestModel = new CreateContestModel(startdate, enddate, starttime, endtime, nameoftournamnet, fees, winningprice, gamename, coordinatorname, contactno, doc_url);
+databaseReference.child(nameoftournamnet).setValue(createContestModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+    @Override
+    public void onComplete(@NonNull Task<Void> task) {
+        if (task.isSuccessful()) {
+            Toast.makeText(CreateContest.this, "Successfully created contest", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(CreateContest.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
 
-            }
         }
-    });
+    }
+});
 }else {
-    Toast.makeText(CreateContest.this,"Please Fill The form Correctly", Toast.LENGTH_LONG).show();
+Toast.makeText(CreateContest.this,"Please Fill The form Correctly", Toast.LENGTH_LONG).show();
 
 }
 
@@ -128,7 +124,6 @@ if(!(startdate.isEmpty()||enddate.isEmpty()||startdate.isEmpty()||nameoftournamn
 
 
 
-            }
         });
 
 

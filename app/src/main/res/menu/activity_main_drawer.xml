@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/profile"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_account_circle_black_24dp"
             android:title="Profile" />
         <item
             android:id="@+id/tournaments"
@@ -14,7 +14,7 @@
             android:title="Tournaments" />
         <item
             android:id="@+id/wallet"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_account_balance_wallet_black_24dp"
             android:title="Wallet" />
         <item
             android:id="@+id/changepassword"
@@ -22,7 +22,7 @@
             android:title="ChangePassword" />
         <item
             android:id="@+id/createcontest"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_playlist_add_black_24dp"
             android:title="Create Contest" />
 
     </group>
@@ -32,7 +32,7 @@
             <item
                 android:id="@+id/referandearn"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Refer And Earn" />
+                android:title="Rate Us" />
             <item
                 android:id="@+id/contactus"
                 android:icon="@drawable/ic_menu_send"

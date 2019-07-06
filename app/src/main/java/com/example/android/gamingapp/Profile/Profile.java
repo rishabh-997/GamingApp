@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,17 +42,23 @@ public class Profile extends AppCompatActivity {
         databaseReference=database.getReference().child("profiledetails");
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         final String uid=firebaseUser.getUid();
-        Toast.makeText(Profile.this,uid,Toast.LENGTH_SHORT).show();
 
 
         SharedPreferences result=getSharedPreferences("phone",Context.MODE_PRIVATE);
-        final String shphonenumber=result.getString("Value","0000000000").trim();
+        final String shphonenumber=result.getString("Value","").trim();
+        final String sname=result.getString("name","").trim();
+        final String semail=result.getString("email","").trim();
+        Log.e("value",shphonenumber);
+        Log.e("value1",sname);
+        Log.e("value2",semail);
+
+        pname.setText(sname);
+      pemail.setText(semail);
+      pphone.setText(shphonenumber);
+     if(sname.isEmpty() && semail.isEmpty() && shphonenumber.isEmpty() ) {
 
 
-
-
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
+       databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
@@ -95,9 +102,7 @@ public class Profile extends AppCompatActivity {
 
 
 
-
-
-
+     }
 
     }
 }

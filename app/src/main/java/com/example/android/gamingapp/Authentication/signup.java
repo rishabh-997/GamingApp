@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import com.google.android.material.textfield.TextInputEditText;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -23,8 +24,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
@@ -38,6 +42,8 @@ public class signup extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     SharedPreferences sharedPreferences;
+
+    int p=1;
 
 
     @Override
@@ -66,23 +72,54 @@ public class signup extends AppCompatActivity {
         otpverify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            String namei = username.getText().toString().trim();
-            String ph = pone.getText().toString().trim();
-            if(namei.isEmpty())
-                username.setError("Enter Name");
-            else if(ph.isEmpty())
-                pone.setError("Enter Phone Number");
+                String namei = username.getText().toString().trim();
+                String ph = pone.getText().toString().trim();
+
+                if (namei.isEmpty())
+                    username.setError("Enter Name");
+                else if (ph.isEmpty())
+                    pone.setError("Enter Phone Number");
                 else {
+                    DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference("profiledetails");
+                     p=1;
+                    databaseReference2.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot db : dataSnapshot.getChildren()) {
+                                Log.e("child",dataSnapshot.getValue().toString());
+                                Log.e("child1",db.child("phonenumber").getValue().toString());
+                                if (db.child("phonenumber").getValue().toString().equals(ph)) {
+                                    p = 0;
+                                    Toast.makeText(signup.this, "Phone NUmber Already Use By Another Account", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                            if(p==1)
+                            {
+                                StartFirebaseLogin();
 
-                    StartFirebaseLogin();
+                                PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                                        "+91" + ph,                     // Phone number to verify
+                                        60,                           // Timeout duration
+                                        TimeUnit.SECONDS,                // Unit of timeout
+                                        signup.this,        // Activity (for callback binding)
+                                        mCallback);
+                            }
+                        }
 
-                    PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                            "+91" + ph,                     // Phone number to verify
-                            60,                           // Timeout duration
-                            TimeUnit.SECONDS,                // Unit of timeout
-                            signup.this,        // Activity (for callback binding)
-                            mCallback);
-                }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+
+
+
+
+
+
+            }
         }
 });
 
@@ -140,7 +177,7 @@ public class signup extends AppCompatActivity {
                     Toast.makeText(signup.this, "please fill email", Toast.LENGTH_LONG).show();
                 }
                 else if(passwo.isEmpty())
-                    Toast.makeText(signup.this, "please fill passwo", Toast.LENGTH_LONG).show();
+                    Toast.makeText(signup.this, "please fill password", Toast.LENGTH_LONG).show();
                 else
 
                 {
@@ -162,6 +199,8 @@ public class signup extends AppCompatActivity {
                                 sharedPreferences=getSharedPreferences("phone",Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor=sharedPreferences.edit();
                                 editor.putString("Value",ph);
+                                editor.putString("name",namei);
+                                editor.putString("email",ema);
                                 editor.apply();
 
                                 startActivity(new Intent(signup.this, MainActivity.class));
@@ -225,11 +264,16 @@ public class signup extends AppCompatActivity {
                 verificationCode = s;
                 Toast.makeText(signup.this,"Code sent",Toast.LENGTH_SHORT).show();
             }
+
+
+
         };
     }
 
 
-
-
-
+    @Override
+    public void onBackPressed() {
+       startActivity(new Intent(signup.this,login.class));
+        super.onBackPressed();
+    }
 }

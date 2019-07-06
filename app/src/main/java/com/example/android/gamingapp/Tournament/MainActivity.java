@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.android.gamingapp.Authentication.login;
 import com.example.android.gamingapp.R;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.navigation.NavigationView;
@@ -194,7 +195,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             FirebaseAuth.getInstance().signOut();
             finish();
-            Intent i=new Intent(MainActivity.this,signup.class);
+            Intent i=new Intent(MainActivity.this, login.class);
             startActivity(i);        }
 
         return super.onOptionsItemSelected(item);

@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Profile extends AppCompatActivity {
 
-    Chip pname,pphone,pemail;
+    TextView pname,pphone,pemail;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
     ChildEventListener childEventListener;

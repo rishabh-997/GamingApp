@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -30,7 +31,7 @@ public class IntroActivity extends AppCompatActivity {
     private LinearLayout dotsLayout;
     private TextView[] dots;
     private int[] layouts;
-    private Button btnNext;
+    private ImageButton btnNext;
     private PrefManager prefManager;
 
     @Override
@@ -157,7 +158,7 @@ public class IntroActivity extends AppCompatActivity {
             layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             View view = layoutInflater.inflate(layouts[position], container, false);
-            btnNext = (Button) view.findViewById(R.id.btn_next);
+            btnNext = view.findViewById(R.id.btn_next);
             btnNext.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -174,12 +175,12 @@ public class IntroActivity extends AppCompatActivity {
             });
             if (position == layouts.length - 1) {
                 // last page. make button text to GOT IT
-                btnNext.setText(getString(R.string.start));
+
 
 
             }
             else{
-                btnNext.setText(getString(R.string.next));
+
             }
             container.addView(view);
 

@@ -7,23 +7,23 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     tools:context=".Authentication.signup"
-    android:background="@drawable/bg_signup"
-    android:backgroundTint="#DF3D055E"
-    android:backgroundTintMode="src_over"
+    android:background="@drawable/game_background_wallpaper"
     android:scrollbars="vertical"
+    android:backgroundTint="@color/backgrountTint"
+    android:backgroundTintMode="src_over"
         >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleX="0.8"
-        android:scaleY="0.8"
+        android:scaleX="0.9"
+        android:scaleY="0.9"
         >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="Sign Up"
-        android:textColor="@android:color/holo_purple"
+        android:textColor="#F57C00"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout3" />
@@ -48,6 +48,9 @@
             android:layout_alignParentTop="true"
             android:ems="16"
             android:hint="name"
+          android:padding="8dp"
+          android:textColorHint="@color/LightBlack"
+          android:textColor="@color/LightBlack"
             android:layout_margin="8dp"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -55,8 +58,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout4"
         style="@style/SignUpTextInputLayoutStyle"
-        android:layout_width="189dp"
-        android:layout_height="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="32dp"
@@ -69,22 +72,25 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:ems="10"
+          android:padding="8dp"
+          android:textColorHint="@color/LightBlack"
+          android:textColor="@color/LightBlack"
             android:hint="phone number"
             android:layout_margin="8dp"
             android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/otpverify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="12dp"
-        android:text="generate otp"
-        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout4"
-        app:layout_constraintStart_toEndOf="@+id/textInputLayout4" />
+        <Button
+          android:id="@+id/otpverify"
+          style="@style/RoundButton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentTop="true"
+          android:layout_alignParentEnd="true"
+          android:text="generate otp"
+          android:textColor="@color/LightBlack"
+          app:layout_constraintBottom_toBottomOf="@+id/textInputLayout4"
+          app:layout_constraintStart_toEndOf="@+id/textInputLayout4" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout5"
@@ -101,6 +107,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="6"
+          android:padding="8dp"
+          android:textColorHint="@color/LightBlack"
+          android:textColor="@color/LightBlack"
             android:hint="otp"
             android:layout_margin="8dp"
             android:inputType="number" />
@@ -121,22 +130,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="16"
+          android:padding="8dp"
+          android:textColorHint="@color/LightBlack"
+          android:textColor="@color/LightBlack"
             android:hint="email"
             android:layout_margin="8dp"
             android:inputType="textEmailAddress"
              />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/makaccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="20dp"
-        android:text="MakeAccount"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout7"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7" />
+        <Button
+          android:id="@+id/makaccount"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentEnd="true"
+          android:layout_alignParentBottom="true"
+          style="@style/RoundButton"
+          android:textColor="@color/LightBlack"
+          android:layout_marginTop="48dp"
+          android:text="MakeAccount"
+          app:layout_constraintStart_toStartOf="@+id/textInputLayout7"
+          app:layout_constraintTop_toBottomOf="@+id/textInputLayout7" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout7"
@@ -154,6 +168,9 @@
             android:layout_height="match_parent"
             android:ems="16"
             android:layout_margin="8dp"
+          android:padding="8dp"
+          android:textColorHint="@color/LightBlack"
+          android:textColor="@color/LightBlack"
             android:hint="password"
             android:inputType="textPersonName"
              />
@@ -168,6 +185,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="32dp"
         android:text="submitotp"
+      android:textColor="@color/LightBlack"
+      style="@style/RoundButton"
         app:layout_constraintBottom_toBottomOf="@+id/textInputLayout5"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout5"
         />

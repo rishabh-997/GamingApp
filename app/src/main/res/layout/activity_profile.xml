@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   xmlns:tools="http://schemas.android.com/tools"
@@ -8,22 +8,24 @@
   android:background="@color/colorPrimaryDark">
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <com.facebook.drawee.view.SimpleDraweeView
       android:id="@+id/profile_image"
       android:layout_width="96dp"
       android:layout_height="96dp"
-      android:src="@mipmap/ic_launcher"
-      app:layout_anchor="@id/profile_card"
-      app:layout_anchorGravity="center|top"
+      android:layout_above="@+id/profile_card"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="52dp"
       android:elevation="3dp"
-      />
+      app:roundAsCircle="true"
+      android:background="@drawable/signin_header" />
 
     <androidx.cardview.widget.CardView
       android:layout_width="280dp"
       android:layout_gravity="center"
       android:id="@+id/profile_card"
       android:elevation="@dimen/cardview_default_elevation"
-      app:cardCornerRadius="8dp"
+      app:cardCornerRadius="16dp"
+      android:layout_centerInParent="true"
       app:cardBackgroundColor="@color/colorPrimary"
       android:layout_height="wrap_content">
 <RelativeLayout
@@ -41,49 +43,94 @@
       android:visibility="gone"
       />
 
-    <com.google.android.material.chip.Chip
+    <TextView
+      android:id="@+id/tv_pro"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:layout_marginTop="8dp"
+      android:layout_marginBottom="20dp"
+      android:text="Profile Details"
+      android:layout_centerHorizontal="true"
+      android:textColor="@android:color/white"
+      android:textSize="20sp" />
+    <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/tv_2"
+      android:layout_below="@+id/tv_pro"
+      android:layout_alignParentStart="true"
+      android:layout_marginBottom="36dp"
+      android:paddingStart="20dp"
+      android:background="@drawable/tv_background">
+        <TextView
+          android:paddingTop="4dp"
+          android:textColor="#3DC0E9"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Name"/>
+    <TextView
       android:id="@+id/profilename"
       android:layout_width="match_parent"
-      android:padding="@dimen/padding_10"
       android:layout_height="wrap_content"
-      app:chipBackgroundColor="@color/colorAccent"
-      android:layout_alignParentStart="true"
-      android:layout_alignParentTop="true"
-      android:layout_marginStart="0dp"
-      android:textAlignment="center"
-      android:textColor="@color/LightWhite"
-      android:layout_marginTop="67dp"
-      android:text="profile name" />
-
-    <com.google.android.material.chip.Chip
+      android:paddingTop="4dp"
+      android:paddingBottom="@dimen/padding_10"
+      android:text="profile name"
+      android:textColor="@color/LightWhite" />
+    </LinearLayout>
+    <LinearLayout
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_below="@id/tv_2"
+  android:layout_alignStart="@id/tv_2"
+      android:layout_marginBottom="36dp"
+  android:layout_marginStart="0dp"
+      android:paddingStart="20dp"
+      android:id="@+id/tv_3"
+      android:orientation="vertical"
+  android:layout_alignParentStart="true"
+  android:background="@drawable/tv_background">
+        <TextView
+          android:paddingTop="4dp"
+          android:textColor="#3DC0E9"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Phone Number"/>
+    <TextView
       android:id="@+id/profilephone"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_below="@+id/profileemail"
-      android:layout_alignStart="@+id/profileemail"
-      android:layout_marginStart="0dp"
-      android:padding="@dimen/padding_10"
-      android:layout_marginTop="27dp"
-      android:textAlignment="center"
-      android:textColor="@color/LightWhite"
-      android:layout_marginBottom="0dp"
+      android:paddingBottom="@dimen/padding_10"
+      android:paddingTop="4dp"
       android:text="Phone no"
-      app:chipBackgroundColor="@color/colorAccent" />
-
-    <com.google.android.material.chip.Chip
-      app:chipBackgroundColor="@color/colorAccent"
-      android:id="@+id/profileemail"
-      android:padding="@dimen/padding_10"
+      android:textColor="@color/LightWhite" />
+</LinearLayout>
+    <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:textColor="@color/LightWhite"
-      android:layout_below="@+id/profilename"
-      android:textAlignment="center"
-      android:layout_alignStart="@+id/profilename"
-      android:layout_marginStart="1dp"
-      android:layout_marginTop="27dp"
-      android:text="Email" />
+      android:layout_below="@+id/tv_3"
+      android:orientation="vertical"
+      android:paddingStart="16dp"
+      android:layout_alignStart="@+id/tv_3"
+      android:layout_alignParentStart="true"
+      android:background="@drawable/tv_background">
+        <TextView
+          android:paddingTop="4dp"
+          android:textColor="#3DC0E9"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Email"/>
+        <TextView
+          android:id="@+id/profileemail"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:paddingTop="4dp"
+          android:paddingBottom="8dp"
+          android:text="Email"
+          android:textColor="@color/LightWhite" />
+    </LinearLayout>
 
 </RelativeLayout>
     </androidx.cardview.widget.CardView>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>

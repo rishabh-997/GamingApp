@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.example.android.gamingapp.Authentication.login;
 import com.example.android.gamingapp.R;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.navigation.NavigationView;
 
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Fresco.initialize(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         shimmerFrameLayout=findViewById(R.id.shimmer_view_container);
@@ -90,7 +92,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
 
         database=FirebaseDatabase.getInstance();
         databaseReference=database.getReference().child("Tournaments");
@@ -192,11 +193,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            FirebaseAuth.getInstance().signOut();
-            finish();
-            Intent i=new Intent(MainActivity.this, login.class);
-            startActivity(i);        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -228,8 +225,12 @@ startActivity(new Intent(MainActivity.this,ContactUs.class));
         {
             startActivity(new Intent(MainActivity.this,CreateContest.class));
 
+        }else if(id ==R.id.log_out){
+            FirebaseAuth.getInstance().signOut();
+            finish();
+            Intent i=new Intent(MainActivity.this,signup.class);
+            startActivity(i);
         }
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

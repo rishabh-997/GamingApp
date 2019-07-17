@@ -58,15 +58,7 @@
     android:textColor="@color/LightWhite"
     tools:ignore="MissingPrefix" />
 
-  <Button
-    android:id="@+id/registerforcontest"
-    android:layout_width="189dp"
-    android:layout_height="51dp"
-    style="@style/OutlineButton"
 
-    android:layout_alignEnd="@+id/wp"
-    android:layout_gravity="center"
-    android:text="Register" />
 
 
 </LinearLayout>

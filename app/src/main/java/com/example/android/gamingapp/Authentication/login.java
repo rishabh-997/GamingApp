@@ -1,11 +1,16 @@
 package com.example.android.gamingapp.Authentication;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import com.google.android.material.textfield.TextInputEditText;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import android.view.View;
 import android.widget.Toast;
 
@@ -32,6 +37,7 @@ public class login extends AppCompatActivity
         username = findViewById(R.id.login_email);
         password = findViewById(R.id.login_password);
         firebaseAuth = FirebaseAuth.getInstance();
+        requestSmsPermission();
 
 
 
@@ -83,6 +89,15 @@ public class login extends AppCompatActivity
     public void forgetpassword(View v)
     {
         startActivity(new Intent(login.this,ForgetPassword.class));
+    }
+    private void requestSmsPermission() {
+        String permission = Manifest.permission.RECEIVE_SMS;
+        int grant = ContextCompat.checkSelfPermission(this, permission);
+        if ( grant != PackageManager.PERMISSION_GRANTED) {
+            String[] permission_list = new String[1];
+            permission_list[0] = permission;
+            ActivityCompat.requestPermissions(this, permission_list, 1);
+        }
     }
 
 }

@@ -29,8 +29,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.stfalcon.smsverifycatcher.OnSmsCatchListener;
+import com.stfalcon.smsverifycatcher.SmsVerifyCatcher;
 
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class signup extends AppCompatActivity {
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback;
@@ -42,6 +46,7 @@ public class signup extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     SharedPreferences sharedPreferences;
+    private SmsVerifyCatcher smsVerifyCatcher;
 
     int p=1;
 
@@ -68,6 +73,16 @@ public class signup extends AppCompatActivity {
 
         submit.setEnabled(false);
         submitotp.setEnabled(false);
+
+        smsVerifyCatcher = new SmsVerifyCatcher(this, new OnSmsCatchListener<String>() {
+            @Override
+            public void onSmsCatch(String message) {
+                String code = parseCode(message);//Parse verification code
+                otp.setText(code);//set code in edit text
+                //then you can send verification code to server
+
+            }
+        });
 
         otpverify.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -276,4 +291,26 @@ public class signup extends AppCompatActivity {
        startActivity(new Intent(signup.this,login.class));
         super.onBackPressed();
     }
+    private String parseCode(String message) {
+        Pattern p = Pattern.compile("\\b\\d{6}\\b");
+        Matcher m = p.matcher(message);
+        String code = "";
+        while (m.find()) {
+            code = m.group(0);
+        }
+        return code;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        smsVerifyCatcher.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        smsVerifyCatcher.onStop();
+    }
+
 }

@@ -228,7 +228,7 @@ startActivity(new Intent(MainActivity.this,ContactUs.class));
         }else if(id ==R.id.log_out){
             FirebaseAuth.getInstance().signOut();
             finish();
-            Intent i=new Intent(MainActivity.this,signup.class);
+            Intent i=new Intent(MainActivity.this,login.class);
             startActivity(i);
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

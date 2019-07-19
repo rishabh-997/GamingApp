@@ -80,6 +80,28 @@ public class signup extends AppCompatActivity {
                 String code = parseCode(message);//Parse verification code
                 otp.setText(code);//set code in edit text
                 //then you can send verification code to server
+                submitotp.setOnClickListener(v -> {
+                    String otpn = otp.getText().toString().trim();
+                    if(!otpn.isEmpty()) {
+
+                        boolean work = false;
+                        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, otpn);
+                        firebaseAuth.signInWithCredential(credential)
+                                .addOnCompleteListener(task -> {
+                                    if (task.isSuccessful()) {
+                                        // startActivity(new Intent(signup.this,MainActivity.class));
+                                        //finish();
+                                        Toast.makeText(signup.this, " OTP Verified", Toast.LENGTH_SHORT).show();
+                                        submit.setEnabled(true);
+                                    } else {
+                                        Toast.makeText(signup.this, "Incorrect OTP", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
+
+                    }});
+
+
 
             }
         });
@@ -231,7 +253,8 @@ public class signup extends AppCompatActivity {
 
 
                     signupmodel sign = new signupmodel(namei, ema, ph, passwo);
-                        databaseReference.child(ph).setValue(sign).addOnCompleteListener(task -> {
+                    String email12=ema.replace('.',',');
+                        databaseReference.child(email12).setValue(sign).addOnCompleteListener(task -> {
                             if (task.isSuccessful())
                                 Toast.makeText(signup.this, "Uploaded on FireBase", Toast.LENGTH_SHORT).show();
                             else

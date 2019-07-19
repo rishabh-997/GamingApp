@@ -7,10 +7,7 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     tools:context=".Authentication.signup"
-    android:background="@drawable/game_background_wallpaper"
-    android:scrollbars="vertical"
-    android:backgroundTint="@color/backgrountTint"
-    android:backgroundTintMode="src_over"
+
         >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -87,10 +84,10 @@
           android:layout_height="wrap_content"
           android:layout_alignParentTop="true"
           android:layout_alignParentEnd="true"
-          android:text="generate otp"
+          android:text="send otp"
           android:textColor="@color/LightBlack"
-          app:layout_constraintBottom_toBottomOf="@+id/textInputLayout4"
-          app:layout_constraintStart_toEndOf="@+id/textInputLayout4" />
+          app:layout_constraintStart_toEndOf="@+id/textInputLayout4"
+          app:layout_constraintTop_toTopOf="@+id/textInputLayout4" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout5"

@@ -22,7 +22,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.android.gamingapp.R;
-import com.example.android.gamingapp.RVAnimation;
 import com.example.android.gamingapp.Register.Register;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.material.chip.Chip;

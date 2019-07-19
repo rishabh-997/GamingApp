@@ -29,9 +29,9 @@
         </activity>
         <activity android:name=".Tournament.MainActivity" />
         <activity android:name=".Authentication.login"
-            android:windowSoftInputMode="adjustNothing"/>
+          android:theme="@style/LoginTheme"/>
         <activity android:name=".Authentication.signup"
-            />
+            android:theme="@style/LoginTheme"/>
         <activity android:name=".Authentication.otp" />
         <activity
             android:name=".Tournament.CreateContest"

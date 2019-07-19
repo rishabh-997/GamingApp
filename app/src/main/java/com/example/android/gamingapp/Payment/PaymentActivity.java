@@ -101,13 +101,18 @@ public class PaymentActivity extends Activity implements PaymentResultListener {
             String nameoftournament=getIntent().getStringExtra("nameoftournament");
             String uname=getIntent().getStringExtra("username");
             String fees=getIntent().getStringExtra("fees");
-            String phone=getIntent().getStringExtra("phone");
+            String ph=getIntent().getStringExtra("phone");
+            FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
+            FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
+            String email=firebaseUser.getEmail();
+            String ema=email.replace('.','.');
             DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference();
 
-            databaseReference.child("Register").child(nameoftournament).child(uname).child(phone).addValueEventListener(new ValueEventListener() {
+
+            databaseReference.child("Register").child(nameoftournament).child(uname).child(ph).child(ema).child(razorpayPaymentID).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Toast.makeText(PaymentActivity.this,"Successfully Register HAppy Gaming",Toast.LENGTH_LONG).show();
+                    Toast.makeText(PaymentActivity.this,"Successfully Register Happy Gaming",Toast.LENGTH_LONG).show();
                 }
 
                 @Override
@@ -115,6 +120,17 @@ public class PaymentActivity extends Activity implements PaymentResultListener {
 
                 }
             });
+            databaseReference.child("Check").child(nameoftournament).child(ema).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
 
 
 

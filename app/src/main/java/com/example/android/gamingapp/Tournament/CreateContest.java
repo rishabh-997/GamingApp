@@ -32,7 +32,7 @@ public class CreateContest extends AppCompatActivity {
 
     FirebaseUser firebaseUser;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,databaseReference2;
     FirebaseStorage firebaseStorage;
     StorageReference storageReference;
 
@@ -109,6 +109,16 @@ databaseReference.child(nameoftournamnet).setValue(createContestModel).addOnComp
     public void onComplete(@NonNull Task<Void> task) {
         if (task.isSuccessful()) {
             Toast.makeText(CreateContest.this, "Successfully created contest", Toast.LENGTH_LONG).show();
+            databaseReference=FirebaseDatabase.getInstance().getReference("Room");
+            RoomModel roomModel=new RoomModel("Empty","Empty");
+            databaseReference.child(nameoftournamnet).setValue(roomModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+
+                }
+            });
+
+
         } else {
             Toast.makeText(CreateContest.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
 

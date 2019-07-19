@@ -1,18 +1,20 @@
-package com.example.android.gamingapp.Tournament;
+package com.example.android.gamingapp;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.android.gamingapp.Authentication.login;
-import com.example.android.gamingapp.R;
+import com.example.android.gamingapp.Tournament.AllTournament;
+import com.example.android.gamingapp.Tournament.AlltournamentModel;
+import com.example.android.gamingapp.Tournament.AlltournamnetAdapter;
+import com.example.android.gamingapp.Tournament.CreateContest;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -20,7 +22,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.Menu;
@@ -28,7 +29,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.android.gamingapp.Authentication.ChangePassword;
-import com.example.android.gamingapp.Authentication.signup;
 import com.example.android.gamingapp.GamingApp.ContactUs;
 import com.example.android.gamingapp.Payment.PaymentActivity;
 import com.example.android.gamingapp.Profile.Profile;
@@ -49,8 +49,6 @@ import io.github.inflationx.calligraphy3.CalligraphyConfig;
 import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
 import io.github.inflationx.viewpump.ViewPump;
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
-
-import static io.github.inflationx.viewpump.ViewPump.init;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -207,7 +205,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.profile) {
 startActivity(new Intent(MainActivity.this,Profile.class));
         } else if (id == R.id.tournaments) {
-startActivity(new Intent(MainActivity.this,AllTournament.class));
+startActivity(new Intent(MainActivity.this, AllTournament.class));
         } else if (id == R.id.wallet) {
    startActivity(new Intent(MainActivity.this,PaymentActivity.class));
         } else if (id == R.id.changepassword) {
@@ -223,7 +221,7 @@ startActivity(new Intent(MainActivity.this,ContactUs.class));
         }
         else if(id == R.id.createcontest)
         {
-            startActivity(new Intent(MainActivity.this,CreateContest.class));
+            startActivity(new Intent(MainActivity.this, CreateContest.class));
 
         }else if(id ==R.id.log_out){
             FirebaseAuth.getInstance().signOut();

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.android.gamingapp.Authentication.login;
 import com.example.android.gamingapp.R;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -227,7 +228,7 @@ startActivity(new Intent(MainActivity.this,ContactUs.class));
         }else if(id ==R.id.log_out){
             FirebaseAuth.getInstance().signOut();
             finish();
-            Intent i=new Intent(MainActivity.this,signup.class);
+            Intent i=new Intent(MainActivity.this,login.class);
             startActivity(i);
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

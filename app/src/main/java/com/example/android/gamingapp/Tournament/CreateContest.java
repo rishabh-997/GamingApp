@@ -32,7 +32,7 @@ public class CreateContest extends AppCompatActivity {
 
     FirebaseUser firebaseUser;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,databaseReference2;
     FirebaseStorage firebaseStorage;
     StorageReference storageReference;
 
@@ -102,13 +102,23 @@ public class CreateContest extends AppCompatActivity {
 
 
 databaseReference=FirebaseDatabase.getInstance().getReference("Tournaments");
-if(!(startdate.isEmpty()||enddate.isEmpty()||nameoftournamnet.isEmpty()||fees.isEmpty()||gamename.isEmpty()||contactno.isEmpty())) {
+if(!(startdate.isEmpty()||nameoftournamnet.isEmpty()||fees.isEmpty()||gamename.isEmpty()||starttime.isEmpty() ||contactno.isEmpty())) {
 CreateContestModel createContestModel = new CreateContestModel(startdate, enddate, starttime, endtime, nameoftournamnet, fees, winningprice, gamename, coordinatorname, contactno, doc_url);
 databaseReference.child(nameoftournamnet).setValue(createContestModel).addOnCompleteListener(new OnCompleteListener<Void>() {
     @Override
     public void onComplete(@NonNull Task<Void> task) {
         if (task.isSuccessful()) {
             Toast.makeText(CreateContest.this, "Successfully created contest", Toast.LENGTH_LONG).show();
+            databaseReference=FirebaseDatabase.getInstance().getReference("Room");
+            RoomModel roomModel=new RoomModel("Empty","Empty");
+            databaseReference.child(nameoftournamnet).setValue(roomModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+
+                }
+            });
+
+
         } else {
             Toast.makeText(CreateContest.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
 
@@ -116,9 +126,7 @@ databaseReference.child(nameoftournamnet).setValue(createContestModel).addOnComp
     }
 });
 }else {
-Toast.makeText(CreateContest.this,"Please Fill The form Correctly", Toast.LENGTH_LONG).show();
-
-}
+Toast.makeText(CreateContest.this,"Please Fill The form Correctly", Toast.LENGTH_LONG).show(); }
 
 
 

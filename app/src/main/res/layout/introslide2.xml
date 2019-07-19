@@ -1,59 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/intro_2"
+  android:backgroundTint="@color/backgrountTint"
+  android:backgroundTintMode="src_atop">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center_horizontal"
-        android:layout_width="match_parent"
-        android:layout_marginStart="@dimen/card_margin"
-        app:cardCornerRadius="4dp"
-        android:elevation="4dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/slide_1_title"
-                android:textColor="@color/colorTextDarkBlack"
-                android:textSize="32sp"
-                android:layout_marginTop="20dp"
-                android:textStyle="bold"
-                android:paddingLeft="@dimen/desc_padding"
-                android:paddingRight="@dimen/desc_padding"
-                android:layout_gravity="center"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="@dimen/desc_padding"
-                android:paddingRight="@dimen/desc_padding"
-                android:text="@string/slide_1_desc"
-                android:textAlignment="center"
-                android:textColor="@color/colorTextBlack"
-                android:textSize="16sp" />
-            <ImageView
-                android:layout_width="@dimen/img_width_height"
-                android:layout_height="@dimen/img_width_height"
-                android:src="@drawable/ic_launcher_background"
-                android:layout_gravity="center"
-                android:layout_marginBottom="16dp"
-                android:contentDescription="@string/title_activity_welcome"
-                android:layout_marginTop="16dp"/>
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_next"
-                android:foreground="?attr/selectableItemBackground"
-                android:background="@color/colorAccent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/next"
-                android:textColor="@android:color/white"/>
-        </LinearLayout>
+    <RelativeLayout
+      android:id="@+id/lay"
+      android:layout_width="262dp"
+      android:layout_height="575dp"
+      android:layout_centerInParent="true">
 
-    </com.google.android.material.card.MaterialCardView>
+        <TextView
+          android:id="@+id/tv2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentStart="true"
+          android:layout_alignParentTop="true"
+          android:layout_marginStart="10dp"
+          android:layout_marginTop="31dp"
+          android:layout_marginBottom="20dp"
+          android:text="Discover"
+          android:textColor="@color/WhiteTint"
+          android:textSize="32sp" />
+
+        <ImageView
+          android:id="@+id/icon"
+          android:layout_width="260dp"
+          android:layout_height="260dp"
+          android:layout_below="@+id/tv2"
+          android:layout_centerHorizontal="true"
+          android:src="@drawable/img_intro_2" />
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/icon"
+          android:id="@+id/tv3"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="32dp"
+          android:textAlignment="center"
+          android:text="From a huge variety of games"
+          android:textColor="@color/WhiteTint"
+          android:textSize="20sp" />
+
+        <ImageButton
+          android:id="@+id/btn_next"
+          android:layout_width="54dp"
+          android:layout_height="68dp"
+          android:layout_below="@id/tv3"
+          android:layout_marginTop="41dp"
+          android:layout_centerHorizontal="true"
+          android:background="@drawable/ic_navigate_next_black_24dp" />
+    </RelativeLayout>
+
+
+
 </RelativeLayout>

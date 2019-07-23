@@ -37,8 +37,8 @@ String email,shphonenumber;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        phone=findViewById(R.id.registerphone);
-        fees=findViewById(R.id.registerfees);
+//        phone=findViewById(R.id.registerphone);
+//        fees=findViewById(R.id.registerfees);
         username=findViewById(R.id.registerusername);
         register=findViewById(R.id.register);
         FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();

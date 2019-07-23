@@ -29,8 +29,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.stfalcon.smsverifycatcher.OnSmsCatchListener;
+import com.stfalcon.smsverifycatcher.SmsVerifyCatcher;
 
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class signup extends AppCompatActivity {
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback;
@@ -42,6 +46,7 @@ public class signup extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     SharedPreferences sharedPreferences;
+    private SmsVerifyCatcher smsVerifyCatcher;
 
     int p=1;
 
@@ -68,6 +73,38 @@ public class signup extends AppCompatActivity {
 
         submit.setEnabled(false);
         submitotp.setEnabled(false);
+
+        smsVerifyCatcher = new SmsVerifyCatcher(this, new OnSmsCatchListener<String>() {
+            @Override
+            public void onSmsCatch(String message) {
+                String code = parseCode(message);//Parse verification code
+                otp.setText(code);//set code in edit text
+                //then you can send verification code to server
+                submitotp.setOnClickListener(v -> {
+                    String otpn = otp.getText().toString().trim();
+                    if(!otpn.isEmpty()) {
+
+                        boolean work = false;
+                        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, otpn);
+                        firebaseAuth.signInWithCredential(credential)
+                                .addOnCompleteListener(task -> {
+                                    if (task.isSuccessful()) {
+                                        // startActivity(new Intent(signup.this,MainActivity.class));
+                                        //finish();
+                                        Toast.makeText(signup.this, " OTP Verified", Toast.LENGTH_SHORT).show();
+                                        submit.setEnabled(true);
+                                    } else {
+                                        Toast.makeText(signup.this, "Incorrect OTP", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
+
+                    }});
+
+
+
+            }
+        });
 
         otpverify.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,7 +253,8 @@ public class signup extends AppCompatActivity {
 
 
                     signupmodel sign = new signupmodel(namei, ema, ph, passwo);
-                        databaseReference.child(ph).setValue(sign).addOnCompleteListener(task -> {
+                    String email12=ema.replace('.',',');
+                        databaseReference.child(email12).setValue(sign).addOnCompleteListener(task -> {
                             if (task.isSuccessful())
                                 Toast.makeText(signup.this, "Uploaded on FireBase", Toast.LENGTH_SHORT).show();
                             else
@@ -276,4 +314,26 @@ public class signup extends AppCompatActivity {
        startActivity(new Intent(signup.this,login.class));
         super.onBackPressed();
     }
+    private String parseCode(String message) {
+        Pattern p = Pattern.compile("\\b\\d{6}\\b");
+        Matcher m = p.matcher(message);
+        String code = "";
+        while (m.find()) {
+            code = m.group(0);
+        }
+        return code;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        smsVerifyCatcher.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        smsVerifyCatcher.onStop();
+    }
+
 }

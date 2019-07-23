@@ -4,17 +4,11 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@drawable/game_background_wallpaper"
-  android:scrollbars="vertical"
-  android:backgroundTint="@color/backgrountTint"
-  android:backgroundTintMode="src_over"
   >
-
     <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       >
-
       <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
@@ -31,12 +25,12 @@
         style="@style/LoginTextInputLayoutStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:paddingBottom="8dp"
         app:hintEnabled="false"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.0"
-        android:paddingStart="8dp"
+        android:paddingBottom="4dp"
+        android:paddingTop="2dp"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
@@ -45,9 +39,9 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:hint="Email"
-          android:paddingEnd="28dp"
+          android:paddingStart="16dp"
+          android:layout_gravity="center"
           android:inputType="textEmailAddress"
-          android:padding="8dp"
           android:textColor="@color/LightBlack"
           android:textColorHint="@color/LightBlack"
           android:textSize="16dp" />
@@ -58,27 +52,26 @@
         android:id="@+id/textInputLayout"
         style="@style/LoginTextInputLayoutStyle"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/tex_size_default"
         android:layout_marginTop="32dp"
         app:hintEnabled="false"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
-        android:paddingStart="8dp"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
           android:id="@+id/login_password"
           android:layout_width="match_parent"
-          android:layout_height="40dp"
+          android:layout_height="wrap_content"
           android:hint="Enter Password"
-          android:paddingEnd="28dp"
           android:inputType="textPassword"
+          android:paddingStart="16dp"
           android:textColorHint="@color/LightBlack"
           android:textColor="@color/LightBlack"
-          android:padding="8dp"
-
           android:textSize="16sp" />
       </com.google.android.material.textfield.TextInputLayout>
 

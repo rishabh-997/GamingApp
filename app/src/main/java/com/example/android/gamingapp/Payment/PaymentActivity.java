@@ -29,13 +29,13 @@ public class PaymentActivity extends Activity implements PaymentResultListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_payment);
+        setContentView(R.layout.coming_soon);
 
         /*
          To ensure faster loading of the Checkout form,
           call this method as early as possible in your checkout flow.
          */
-        Checkout.preload(getApplicationContext());
+        /*Checkout.preload(getApplicationContext());
 
         // Payment button created by you in XML layout
         Button button = (Button) findViewById(R.id.btn_pay);
@@ -45,7 +45,7 @@ public class PaymentActivity extends Activity implements PaymentResultListener {
             public void onClick(View v) {
                 startPayment();
             }
-        });
+        });*/
     }
 
     public void startPayment() {

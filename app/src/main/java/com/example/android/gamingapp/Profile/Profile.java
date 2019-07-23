@@ -41,6 +41,8 @@ public class Profile extends AppCompatActivity {
         database=FirebaseDatabase.getInstance();
         databaseReference=database.getReference().child("profiledetails");
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        String ema1=firebaseUser.getEmail();
+        String ema=ema1.replace('.',',');
         final String uid=firebaseUser.getUid();
 
 
@@ -63,13 +65,10 @@ public class Profile extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
 
-                    String name1 = dataSnapshot.child(shphonenumber).child("name").getValue().toString();
-                        String email1 = dataSnapshot.child(shphonenumber).child("email").getValue().toString();
-                        String phone1 = dataSnapshot.child(shphonenumber).child("phonenumber").getValue().toString();
-
-                         ProfileModel profileModel = new ProfileModel(name1, email1, phone1);
-
-
+                    String name1 = dataSnapshot.child(ema).child("name").getValue().toString();
+                        String email1 = dataSnapshot.child(ema).child("email").getValue().toString();
+                        String phone1 = dataSnapshot.child(ema).child("phonenumber").getValue().toString();
+                        ProfileModel profileModel = new ProfileModel(name1, email1, phone1);
                         pname.setText(name1);
                         pphone.setText(phone1);
                         pemail.setText(email1);

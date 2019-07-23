@@ -2,12 +2,16 @@ package com.example.android.gamingapp.Tournament;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.example.android.gamingapp.Authentication.login;
 import com.example.android.gamingapp.R;
+import com.example.android.gamingapp.Register.Register;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -26,6 +30,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.example.android.gamingapp.Authentication.ChangePassword;
 import com.example.android.gamingapp.Authentication.signup;
@@ -53,7 +63,7 @@ import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 import static io.github.inflationx.viewpump.ViewPump.init;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,ShowBottomSheet {
     ArrayList<AlltournamentModel> arrayList;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
@@ -66,22 +76,26 @@ public class MainActivity extends AppCompatActivity
     StorageReference storageReference;
     String doc_url="sanket agarwal";
     ShimmerFrameLayout shimmerFrameLayout;
+    BottomSheetBehavior bottomSheetBehavior;
+    SimpleDraweeView contestimage;
+    TextView nameoftournamnet, fees, winningprice;
+    TextView startdate, enddate, starttime, endtime;
+    Button participants,details;
+    RelativeLayout container1,container2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Fresco.initialize(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        initialiseBottomSheet();
+
+
+
         shimmerFrameLayout=findViewById(R.id.shimmer_view_container);
-        ViewPump.init(ViewPump.builder()
-                .addInterceptor(new CalligraphyInterceptor(
-                        new CalligraphyConfig.Builder()
-                                .setDefaultFontPath("fonts/Roboto-RobotoRegular.ttf")
-                                .setFontAttrId(R.attr.fontPath)
-                                .build()))
-                .build());
 
         Log.d("MainActivity","okkkkk");
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -168,6 +182,52 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    private void initialiseBottomSheet() {
+        startdate=findViewById(R.id.sdate);
+        starttime = findViewById(R.id.stime);
+        nameoftournamnet=findViewById(R.id.not);
+        fees=findViewById(R.id.fe);
+        winningprice=findViewById(R.id.wp);
+
+        participants=findViewById(R.id.participants);
+        details=findViewById(R.id.details);
+        container1=findViewById(R.id.bottom_sheet_container1);
+        container2=findViewById(R.id.bottom_sheet_container2);
+        contestimage=findViewById(R.id.tour_img);
+
+
+        LinearLayout bottom= findViewById(R.id.bottom_sheet);
+        bottomSheetBehavior=BottomSheetBehavior.from(bottom);
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+        Button button=findViewById(R.id.button_join);
+
+
+        //TODO show Toast if already registered registered
+        button.setOnClickListener(v->{
+            Intent i=new Intent(this, Register.class);
+            this.startActivity(i);
+        });
+
+        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View view, int i) {
+                if(i==BottomSheetBehavior.STATE_COLLAPSED){
+                    button.setVisibility(View.VISIBLE);}
+                else if(i==BottomSheetBehavior.STATE_HIDDEN) {
+                    button.setVisibility(View.GONE);
+                }
+                else if(i==BottomSheetBehavior.STATE_EXPANDED)
+                {}
+
+            }
+
+            @Override
+            public void onSlide(@NonNull View view, float v) {
+
+            }
+        });
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -237,7 +297,33 @@ startActivity(new Intent(MainActivity.this,ContactUs.class));
     }
 
     @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
+    public void bottomSheet(AlltournamentModel model) {
+
+        participants.setOnClickListener(v->{
+            details.setEnabled(true);
+            details.setTextColor(getResources().getColor(R.color.background));
+            participants.setEnabled(false);
+            participants.setTextColor(getResources().getColor(android.R.color.white));
+            container1.setVisibility(View.GONE);
+            container2.setVisibility(View.VISIBLE);
+        });
+
+        details.setOnClickListener(v->{
+            details.setEnabled(false);
+            participants.setEnabled(true);
+            details.setTextColor(getResources().getColor(android.R.color.white));
+            participants.setTextColor(getResources().getColor(R.color.background));
+            container1.setVisibility(View.VISIBLE);
+            container2.setVisibility(View.GONE);
+        });
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        startdate.setText(model.getStartdate());
+        starttime.setText(model.getStarttime());
+        contestimage.setImageURI(Uri.parse("https://statics.sportskeeda.com/editor/2019/07/b934a-15630410641271-800.jpg"));
+        nameoftournamnet.setText(model.getNameoftournamnet());
+        fees.setText(model.getFees());
+        winningprice.setText(model.getWinningprice());
+
+
     }
 }

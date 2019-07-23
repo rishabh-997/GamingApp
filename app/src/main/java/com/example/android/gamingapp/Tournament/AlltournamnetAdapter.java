@@ -1,9 +1,14 @@
 package com.example.android.gamingapp.Tournament;
 
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.net.Uri;
@@ -19,11 +24,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.android.gamingapp.R;
 import com.example.android.gamingapp.Register.Register;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.chip.Chip;
 import com.squareup.picasso.Picasso;
 
@@ -73,9 +81,8 @@ public class AlltournamnetAdapter  extends RecyclerView.Adapter<AlltournamnetAda
         //viewHolder.contactno.setText(contactno);
 //           Picasso.get().load(doc_url).into(viewHolder.contestimage);
         viewHolder.register.setOnClickListener(v -> {
-            Intent i=new Intent(context,Register.class);
-            context.startActivity(i);
-
+            ShowBottomSheet activity=(ShowBottomSheet)context;
+            activity.bottomSheet(alltournamentModel);
         });
         viewHolder.contestimage.setImageURI(Uri.parse("https://statics.sportskeeda.com/editor/2019/07/b934a-15630410641271-800.jpg"));
         viewHolder.progressBar.setProgress(90);
@@ -83,6 +90,10 @@ public class AlltournamnetAdapter  extends RecyclerView.Adapter<AlltournamnetAda
         //viewHolder.author.setText(msg);
         //viewHolder.price.setText(prc);
         //Picasso.get().load(photourl).into(viewHolder.bookimage);
+            //TODO show & set room id pass if registered
+            viewHolder.room_id.setText("");
+            viewHolder.room_pass.setText("");
+
 
     }
 
@@ -92,21 +103,23 @@ public class AlltournamnetAdapter  extends RecyclerView.Adapter<AlltournamnetAda
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView nameoftournamnet, fees, winningprice, gamename, coordinatorname, contactno;
+        TextView nameoftournamnet, fees, winningprice, gamename, coordinatorname, contactno,room_id,room_pass;
         TextView startdate, enddate, starttime, endtime;
         SimpleDraweeView contestimage;
         Button register;
         View up_arror, down_arrow;
-        LinearLayout linearLayout;
+        RelativeLayout layout_after_reg;
         ProgressBar progressBar;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            //linearLayout = itemView.findViewById(R.id.linear_layout);
+            layout_after_reg=itemView.findViewById(R.id.lay_after_reg);
             startdate=itemView.findViewById(R.id.sdate);
             //enddate=itemView.findViewById(R.id.edate);
             progressBar=itemView.findViewById(R.id.progress_bar);
             starttime = itemView.findViewById(R.id.stime);
+            room_id=itemView.findViewById(R.id.room_id);
+            room_pass=itemView.findViewById(R.id.room_pass);
             //up_arror = itemView.findViewById(R.id.up_arrow);
             //down_arrow = itemView.findViewById(R.id.down_arrow);
             //endtime=itemView.findViewById(R.id.etime);

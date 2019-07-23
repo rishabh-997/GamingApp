@@ -5,9 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorSecondary">@color/textThemeColor</item>
         <item name="colorPrimary">@color/colorPrimary</item>
-
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -81,6 +79,13 @@
     <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
     <item name="android:minWidth">1dip</item>
     <item name="android:maxWidth">12dip</item>
+  </style>
+
+  <style name="RedButton" parent="RoundButton">
+    <item name="backgroundTint">#7CEE5E68</item>
+  </style>
+  <style name="WhiteButton" parent="RoundButton">
+    <item name="backgroundTint">#7EFFFFFF</item>
   </style>
 
 </resources>

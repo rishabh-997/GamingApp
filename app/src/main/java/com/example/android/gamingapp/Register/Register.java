@@ -28,7 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Register extends AppCompatActivity {
-Chip phone,fees;
+TextView phone,fees;
 TextInputEditText username;
 Button register;
 String email,shphonenumber;
@@ -45,10 +45,11 @@ String email,shphonenumber;
         String emai1=firebaseUser.getEmail();
 
         SharedPreferences result=getSharedPreferences("phone",Context.MODE_PRIVATE);
-         shphonenumber=result.getString("Value","0000000000").trim();
-   final String rfees="50";
-        phone.setText(emai1);
-        fees.setText(rfees);
+
+        //final String shphonenumber=result.getString("Value","0000000000").trim();
+   //final String rfees="50";
+//        phone.setText(shphonenumber);
+//        fees.setText(rfees);
         final String nameoftournament="pubg";
         final String uname=username.getText().toString().trim();
          DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("profiledetails");
@@ -79,8 +80,8 @@ String email,shphonenumber;
                 Intent i=new Intent(Register.this,PaymentActivity.class);
                 i.putExtra("nameoftournament",nameoftournament);
                 i.putExtra("username",uname);
-                i.putExtra("phone",shphonenumber);
-                i.putExtra("fees",rfees);
+//                i.putExtra("phone",shphonenumber);
+//                i.putExtra("fees",rfees);
                 startActivity(i);
             }
         });

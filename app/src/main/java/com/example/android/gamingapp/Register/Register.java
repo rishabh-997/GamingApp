@@ -17,7 +17,7 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class Register extends AppCompatActivity {
-Chip phone,fees;
+TextView phone,fees;
 TextInputEditText username;
 Button register;
     @Override
@@ -31,10 +31,10 @@ Button register;
         register=findViewById(R.id.register);
 
         SharedPreferences result=getSharedPreferences("phone",Context.MODE_PRIVATE);
-        final String shphonenumber=result.getString("Value","0000000000").trim();
-   final String rfees="50";
-        phone.setText(shphonenumber);
-        fees.setText(rfees);
+        //final String shphonenumber=result.getString("Value","0000000000").trim();
+   //final String rfees="50";
+//        phone.setText(shphonenumber);
+//        fees.setText(rfees);
         final String nameoftournament="pubg";
         final String uname=username.getText().toString().trim();
 
@@ -45,8 +45,8 @@ Button register;
                 Intent i=new Intent(Register.this,PaymentActivity.class);
                 i.putExtra("nameoftournament",nameoftournament);
                 i.putExtra("username",uname);
-                i.putExtra("phone",shphonenumber);
-                i.putExtra("fees",rfees);
+//                i.putExtra("phone",shphonenumber);
+//                i.putExtra("fees",rfees);
                 startActivity(i);
             }
         });

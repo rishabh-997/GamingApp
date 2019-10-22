@@ -6,45 +6,36 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/profile"
-            android:icon="@drawable/ic_account_circle_black_24dp"
-            android:title="Profile" />
+            android:title="My Profile" />
         <item
             android:id="@+id/tournaments"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Tournaments" />
+            android:title="View Completed" />
         <item
             android:id="@+id/wallet"
-            android:icon="@drawable/ic_account_balance_wallet_black_24dp"
-            android:title="Wallet" />
+            android:title="My Wallet" />
         <item
             android:id="@+id/changepassword"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="ChangePassword" />
+            android:title="Change Password" />
         <item
             android:id="@+id/createcontest"
-            android:icon="@drawable/ic_playlist_add_black_24dp"
             android:title="Create Contest" />
+        <item android:id="@+id/history"
+            android:title="My History"/>
+        <item
+          android:id="@+id/referandearn"
+          android:title="Refer and Earn" />
+        <item android:id="@+id/contactUs"
+            android:title="Support Us"/>
+        <item
+          android:id="@+id/privacy"
+          android:title="Privacy Policy" />
+        <item
+          android:id="@+id/terms_con"
+          android:title="Terms and Condition" />
         <item android:id="@+id/log_out"
-            android:title="Log Out"
-            android:icon="@drawable/ic_directions_run_black_24dp"/>
+          android:title="Log Out"
+          />
 
     </group>
-
-    <item android:title="GamingApp">
-        <menu>
-            <item
-                android:id="@+id/referandearn"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Rate Us" />
-            <item
-                android:id="@+id/contactus"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Contact us" />
-            <item
-                android:id="@+id/complain"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Complain" />
-        </menu>
-    </item>
 
 </menu>

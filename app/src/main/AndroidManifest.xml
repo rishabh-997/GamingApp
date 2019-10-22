@@ -44,13 +44,19 @@
             android:value="rzp_live_ILgsfZCZoFIKMb" />
 
         <activity android:name=".Payment.PaymentActivity" />
-        <activity android:name=".Authentication.ForgetPassword" />
-        <activity android:name=".Authentication.ChangePassword" />
+        <activity android:name=".Authentication.ForgetPassword"
+          android:theme="@style/LoginTheme"/>
+        <activity android:name=".Authentication.ChangePassword"
+          android:theme="@style/LoginTheme"/>
         <activity android:name=".GamingApp.ContactUs" />
         <activity android:name=".Profile.Profile" />
         <activity android:name=".GamingApp.Complain" />
-        <activity android:name=".Tournament.AllTournament" />
+        <activity android:name=".Tournament.ViewCompleted" />
         <activity android:name=".Register.Register"></activity>
+        <activity android:name=".History.HistoryActivity"/>
+        <activity android:name=".ReferEarn.ReferEarnActivity"/>
+        <activity android:name=".TermsAndCondition"/>
+        <activity android:name=".PrivacyPolicy"/>
     </application>
 
 </manifest>

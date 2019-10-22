@@ -74,8 +74,6 @@ public class IntroActivity extends AppCompatActivity {
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
 
-
-
     }
 
     private void addBottomDots(int currentPage) {
@@ -175,8 +173,6 @@ public class IntroActivity extends AppCompatActivity {
             });
             if (position == layouts.length - 1) {
                 // last page. make button text to GOT IT
-
-
 
             }
             else{

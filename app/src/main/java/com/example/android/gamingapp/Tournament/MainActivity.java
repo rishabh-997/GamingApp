@@ -1,14 +1,16 @@
 package com.example.android.gamingapp.Tournament;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
 import com.example.android.gamingapp.Authentication.login;
+import com.example.android.gamingapp.History.HistoryActivity;
+import com.example.android.gamingapp.PrivacyPolicy;
 import com.example.android.gamingapp.R;
+import com.example.android.gamingapp.ReferEarn.ReferEarnActivity;
 import com.example.android.gamingapp.Register.Register;
-import com.facebook.drawee.backends.pipeline.Fresco;
+import com.example.android.gamingapp.TermsAndCondition;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -16,7 +18,6 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -24,7 +25,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.Menu;
@@ -32,13 +32,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.android.gamingapp.Authentication.ChangePassword;
-import com.example.android.gamingapp.Authentication.signup;
 import com.example.android.gamingapp.GamingApp.ContactUs;
 import com.example.android.gamingapp.Payment.PaymentActivity;
 import com.example.android.gamingapp.Profile.Profile;
@@ -54,13 +51,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
-
-import io.github.inflationx.calligraphy3.CalligraphyConfig;
-import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
-import io.github.inflationx.viewpump.ViewPump;
-import io.github.inflationx.viewpump.ViewPumpContextWrapper;
-
-import static io.github.inflationx.viewpump.ViewPump.init;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,ShowBottomSheet {
@@ -233,7 +223,9 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        } else if(bottomSheetBehavior.getState()!=BottomSheetBehavior.STATE_HIDDEN){
+            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+        }else{
             super.onBackPressed();
         }
     }
@@ -265,21 +257,21 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.profile) {
-startActivity(new Intent(MainActivity.this,Profile.class));
+            startActivity(new Intent(MainActivity.this,Profile.class));
         } else if (id == R.id.tournaments) {
-startActivity(new Intent(MainActivity.this,AllTournament.class));
+            startActivity(new Intent(MainActivity.this, ViewCompleted.class));
         } else if (id == R.id.wallet) {
-   startActivity(new Intent(MainActivity.this,PaymentActivity.class));
+            startActivity(new Intent(MainActivity.this,PaymentActivity.class));
         } else if (id == R.id.changepassword) {
-  startActivity(new Intent(MainActivity.this,ChangePassword.class));
+            startActivity(new Intent(MainActivity.this,ChangePassword.class));
         } else if (id == R.id.referandearn) {
-
-        } else if (id == R.id.contactus) {
-startActivity(new Intent(MainActivity.this,ContactUs.class));
+            startActivity(new Intent(MainActivity.this, ReferEarnActivity.class));
+        } else if (id == R.id.privacy) {
+            startActivity(new Intent(MainActivity.this, PrivacyPolicy.class));
         }
-        else if(id == R.id.complain)
+        else if(id == R.id.terms_con)
         {
-
+            startActivity(new Intent(MainActivity.this, TermsAndCondition.class));
         }
         else if(id == R.id.createcontest)
         {
@@ -290,6 +282,10 @@ startActivity(new Intent(MainActivity.this,ContactUs.class));
             finish();
             Intent i=new Intent(MainActivity.this,login.class);
             startActivity(i);
+        }else if(id==R.id.history){
+            startActivity(new Intent(MainActivity.this, HistoryActivity.class));
+        }else if(id==R.id.contactUs){
+            startActivity(new Intent(MainActivity.this, ContactUs.class));
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

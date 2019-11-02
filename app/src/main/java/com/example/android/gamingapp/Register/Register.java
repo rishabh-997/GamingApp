@@ -3,21 +3,17 @@ package com.example.android.gamingapp.Register;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.android.gamingapp.Payment.PaymentActivity;
-import com.example.android.gamingapp.Profile.Profile;
-import com.example.android.gamingapp.Profile.ProfileModel;
 import com.example.android.gamingapp.R;
-import com.google.android.material.chip.Chip;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,79 +22,102 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.shreyaspatil.EasyUpiPayment.EasyUpiPayment;
+import com.shreyaspatil.EasyUpiPayment.listener.PaymentStatusListener;
+import com.shreyaspatil.EasyUpiPayment.model.TransactionDetails;
 
-public class Register extends AppCompatActivity {
-TextView phone,fees;
-TextInputEditText username;
-Button register;
-String email,shphonenumber;
+public class Register extends AppCompatActivity implements PaymentStatusListener {
+    TextView phone, fees;
+    TextInputEditText username;
+    Button register;
+    String email, shphonenumber="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-//        phone=findViewById(R.id.registerphone);
-//        fees=findViewById(R.id.registerfees);
-        username=findViewById(R.id.registerusername);
-        register=findViewById(R.id.register);
-        FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        String emai1=firebaseUser.getEmail();
+        //Create instance of EasyUpiPayment
+        final EasyUpiPayment easyUpiPayment = new EasyUpiPayment.Builder()
+                .with(this)
+                .setPayeeVpa("8318526422@paytm")
+                .setPayeeName("TANMAY PAL")
+                .setTransactionRefId("1234567890_tanmay_pal_refid")
+                .setTransactionId("1234567890_tanmay_pal_id")
+                .setDescription("tanmay ki testing")
+                .setAmount("1.0")
+                .build();
 
-        SharedPreferences result=getSharedPreferences("phone",Context.MODE_PRIVATE);
+        //Register Listener for Events
+        easyUpiPayment.setPaymentStatusListener(this);
 
-        //final String shphonenumber=result.getString("Value","0000000000").trim();
-   //final String rfees="50";
-//        phone.setText(shphonenumber);
-//        fees.setText(rfees);
-        final String nameoftournament="pubg";
-        final String uname=username.getText().toString().trim();
-         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("profiledetails");
-         String ema=emai1.replace('.',',');
-        if(shphonenumber.equals("0000000000")){
+
+        username = findViewById(R.id.registerusername);
+        register = findViewById(R.id.register);
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        String emai1 = firebaseUser.getEmail();
+
+        SharedPreferences result = getSharedPreferences("phone", Context.MODE_PRIVATE);
+
+        final String nameoftournament = "pubg";
+        final String uname = username.getText().toString().trim();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("profiledetails");
+        String ema = emai1.replace('.', ',');
+        if (shphonenumber.equals("")) {
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-                {
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                     String name1 = dataSnapshot.child(ema).child("name").getValue().toString();
 
                     shphonenumber = dataSnapshot.child(ema).child("phonenumber").getValue().toString();
-
-
                 }
+
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(Register.this,databaseError.getMessage(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(Register.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
         }
 
+        register.setOnClickListener(v -> {
 
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(Register.this,PaymentActivity.class);
-                i.putExtra("nameoftournament",nameoftournament);
-                i.putExtra("username",uname);
-//                i.putExtra("phone",shphonenumber);
-//                i.putExtra("fees",rfees);
-                startActivity(i);
-            }
+            easyUpiPayment.startPayment();
+            /*Intent i = new Intent(Register.this, PaymentActivity.class);
+            i.putExtra("nameoftournament", nameoftournament);
+            i.putExtra("username", uname);
+            startActivity(i);*/
         });
+    }
 
+    @Override
+    public void onTransactionCompleted(TransactionDetails transactionDetails) {
 
+        Log.i("Payment Status","Completed transaction");
+        Toast.makeText(this, "Your Payment Transaction was Completed", Toast.LENGTH_SHORT).show();
+        //what to do next
+    }
 
+    @Override
+    public void onTransactionSuccess() {
 
+        Toast.makeText(this, "Your Payment Transaction was Successful", Toast.LENGTH_SHORT).show();
+    }
 
+    @Override
+    public void onTransactionSubmitted() {
 
+        Toast.makeText(this, "Your Payment Transaction was submitted, it may take time", Toast.LENGTH_SHORT).show();
+    }
 
+    @Override
+    public void onTransactionFailed() {
 
+        Toast.makeText(this, "Your Payment Transaction was Failed", Toast.LENGTH_SHORT).show();
+    }
 
-
-
-
-
-
-
+    @Override
+    public void onTransactionCancelled() {
+        Toast.makeText(this, "Your Payment Transaction was cancelled", Toast.LENGTH_SHORT).show();
     }
 }

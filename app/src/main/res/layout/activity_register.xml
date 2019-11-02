@@ -44,7 +44,6 @@
     android:layout_width="160dp"
     android:layout_height="50dp"
     android:id="@+id/tv_1"
-    android:src="@drawable/submit_style"
     android:layout_centerInParent="true"
     android:textSize="32sp"/>
 

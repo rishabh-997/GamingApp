@@ -67,6 +67,7 @@ dependencies {
     implementation 'io.github.inflationx:viewpump:1.0.0'
     implementation 'com.facebook.fresco:fresco:2.0.0'
     implementation 'com.github.stfalcon:smsverifycatcher:0.3.2'
+    implementation 'com.shreyaspatil:EasyUpiPayment:1.1'
 
 
 }

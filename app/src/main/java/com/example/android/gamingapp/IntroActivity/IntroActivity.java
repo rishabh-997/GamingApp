@@ -144,6 +144,7 @@ public class IntroActivity extends AppCompatActivity {
         }
     }
 
+
     /**
      * View pager adapter
      */

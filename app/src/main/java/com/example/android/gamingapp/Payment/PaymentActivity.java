@@ -49,9 +49,7 @@ public class PaymentActivity extends Activity implements PaymentResultListener {
     }
 
     public void startPayment() {
-        /*
-          You need to pass current activity in order to let Razorpay create CheckoutActivity
-         */
+
         final Activity activity = this;
 
         final Checkout co = new Checkout();
@@ -72,7 +70,7 @@ public class PaymentActivity extends Activity implements PaymentResultListener {
             options.put("amount", "100");
             FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
             FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
-  String email=firebaseUser.getEmail();
+            String email=firebaseUser.getEmail();
 
             JSONObject preFill = new JSONObject();
             preFill.put("email", email);
@@ -130,20 +128,6 @@ public class PaymentActivity extends Activity implements PaymentResultListener {
 
                 }
             });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         } catch (Exception e) {
             Log.e(TAG, "Exception in onPaymentSuccess", e);
         }

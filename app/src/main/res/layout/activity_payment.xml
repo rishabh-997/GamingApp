@@ -96,7 +96,7 @@
                 android:layout_gravity="center_horizontal"
                 android:paddingRight="20dp"
                 android:paddingLeft="20dp"
-                android:background="@drawable/green_button"
+                android:background="@drawable/rzp_green_button"
                 android:textSize="14sp"
                 android:textColor="#fcfcfc"
                 android:text="Purchase"

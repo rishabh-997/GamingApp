@@ -68,9 +68,9 @@ public class Register extends AppCompatActivity implements PaymentStatusListener
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                    String name1 = dataSnapshot.child(ema).child("name").getValue().toString();
+                    //String name1 = dataSnapshot.child(ema).child("name").getValue().toString();
 
-                    shphonenumber = dataSnapshot.child(ema).child("phonenumber").getValue().toString();
+                    //shphonenumber = dataSnapshot.child(ema).child("phonenumber").getValue().toString();
                 }
 
                 @Override
